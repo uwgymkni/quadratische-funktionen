@@ -1152,6 +1152,131 @@ input[type=range]::-webkit-slider-runnable-track{background:linear-gradient(90de
 .kern .kh .sqrt .rad{border-top-width:var(--sw)}
 .sqrt .frac{vertical-align:middle}
 
+/* ===== Formelwurf und Spielmodus ===== */
+.fwst{padding:0;overflow:hidden}
+.fwst>.fwtabs,.fwst>.fwhead,.fwst>.fwq{padding-left:20px;padding-right:20px}
+.fwtabs{display:flex;gap:6px;flex-wrap:wrap;padding-top:14px}
+.fwtab{display:flex;align-items:center;gap:8px;height:38px;padding:0 12px 0 6px;border-radius:999px;border:1px solid var(--hair);background:var(--panel);color:var(--ink-2);font:550 .84rem var(--ui);cursor:pointer}
+.fwtab .n{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--panel-2);font:650 .78rem var(--ui);color:var(--ink-2)}
+.fwtab small{color:var(--gold);font-size:.7rem;letter-spacing:.05em}
+.fwtab.cur{border-color:var(--ink);color:var(--ink)}
+.fwtab.cur .n{background:var(--ink);color:var(--panel)}
+.fwtab.won .n{background:color-mix(in srgb,var(--rise) 16%,var(--panel));color:var(--rise)}
+.fwtab.cur.won .n{background:var(--rise);color:#fff}
+.fwhead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;padding-top:16px}
+.fwlv small{display:block;font:600 .7rem/1 var(--ui);letter-spacing:.06em;color:var(--ink-3);margin-bottom:6px}
+.fwlv b{font:650 clamp(1.15rem,2.2vw,1.5rem)/1.1 var(--ui);letter-spacing:-.02em}
+.fwstat{font:500 .85rem var(--ui);color:var(--ink-3)}.fwstat b{color:var(--ink);font-variant-numeric:tabular-nums}
+.fwq{font:400 clamp(1rem,1.5vw,1.12rem)/1.5 var(--serif);color:var(--ink-2);margin:8px 0 14px;max-width:46em}
+.fwrel{position:relative;line-height:0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.fwsvg{display:block;width:100%;height:auto;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.fwsvg .fwtag{font-size:13px}
+.fwsvg .fwpop{font:800 17px var(--ui);paint-order:stroke;stroke:rgba(20,30,40,.55);stroke-width:4px;letter-spacing:.02em}
+.fwban{position:absolute;left:50%;top:16px;transform:translateX(-50%);line-height:1.3;background:rgba(15,30,46,.9);color:#F4F7F9;font:550 1rem var(--ui);padding:11px 18px;border-radius:14px;box-shadow:0 14px 30px -14px rgba(0,0,0,.5);white-space:nowrap;animation:fwban .45s cubic-bezier(.2,1.3,.4,1)}
+.fwban b{color:#F2C14E;margin-right:6px;font-weight:700}
+
+.fwban .fwstars{letter-spacing:.08em;margin-left:6px;color:#F2C14E}.fwban .fwstars i{font-style:normal;color:rgba(255,255,255,.25)}
+@keyframes fwban{from{opacity:0;transform:translate(-50%,-10px) scale(.94)}}
+/* Eingabe */
+.fwctl{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;padding:18px 20px 6px;background:color-mix(in srgb,var(--panel-2) 55%,var(--panel))}
+.fwinbox{flex:1 1 420px;min-width:0;--acc:var(--dy)}
+.fwrow{display:flex;flex-wrap:wrap;align-items:flex-start;row-gap:6px;font:400 clamp(1.25rem,2.6vw,1.75rem)/1 var(--serif);color:var(--ink)}
+.fwt{padding-top:.42em;white-space:nowrap}
+.fwg{display:inline-flex;align-items:flex-start;white-space:nowrap}
+.fwf{display:inline-flex;flex-direction:column;align-items:center;gap:4px}
+.fwf small{font:400 .82rem/1 var(--serif);color:var(--ink-3)}
+.fwbox{display:inline-flex;align-items:center;border:1.5px solid color-mix(in srgb,var(--acc) 45%,var(--line));border-radius:12px;background:var(--panel);overflow:hidden;transition:border-color .15s,box-shadow .15s}
+.fwbox:focus-within{border-color:var(--acc);box-shadow:0 0 0 4px color-mix(in srgb,var(--acc) 16%,transparent)}
+.fwi{border:0;background:none;font:500 1em/1 var(--serif);color:var(--acc);text-align:center;padding:.32em .25em .3em 0;min-width:2.4em;outline:none;font-variant-numeric:tabular-nums}
+.fwi.bad{color:var(--fall)}
+.fwpm{align-self:stretch;width:1.5em;border:0;border-right:1px solid var(--hair);background:color-mix(in srgb,var(--acc) 7%,transparent);color:color-mix(in srgb,var(--acc) 80%,var(--ink));font:600 .62em var(--ui);cursor:pointer}
+.fwpm:hover{background:color-mix(in srgb,var(--acc) 14%,transparent)}
+.fwin.off{opacity:.55}
+.fwbtns{display:flex;gap:8px;flex-wrap:wrap}
+.btn.fwgo{min-height:52px;padding:0 22px;font-size:1rem;border-radius:14px}
+.btn.fwgo svg{margin-right:2px}
+.fwinfo{display:flex;flex-wrap:wrap;gap:6px 18px;padding:8px 20px 12px;font:400 .98rem/1.4 var(--serif);color:var(--ink-2);background:color-mix(in srgb,var(--panel-2) 55%,var(--panel))}
+.fwinfo .fwk{font:500 .82rem/1.6 var(--ui);color:var(--ink-3)}
+.fwsay{min-height:1.5em;padding:14px 20px 4px;font:400 1rem/1.5 var(--ui);color:var(--ink-2)}
+.fwsay:empty{display:none}
+.fwsay b{color:var(--ink);font-weight:650}
+.fwsay.err{color:color-mix(in srgb,var(--fall) 85%,var(--ink))}
+.fwopts{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:10px 20px 16px}
+.fwsw{display:inline-flex;align-items:center;gap:8px;font:500 .85rem var(--ui);color:var(--ink-2);cursor:pointer}
+.fwsw input{width:18px;height:18px;accent-color:var(--ink)}
+.fwsol{font-size:.8rem}
+/* Duell */
+.fwduel{--pc:#C2410C}
+.fwst.duel .fwinbox{--acc:var(--pc)}
+.fwdtop{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;padding:14px 20px 0}
+.fwdtop .sp{flex:1}
+.fwnames{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font:500 .85rem var(--ui);color:var(--ink-3)}
+.fwnames .dot{width:10px;height:10px;border-radius:50%}
+.fwname{width:9.5em;height:34px;border:1px solid var(--hair);border-radius:9px;background:var(--panel);color:var(--ink);font:600 .88rem var(--ui);padding:0 10px}
+.fwscore{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 20px}
+.fwp{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:14px;border:1.5px solid var(--hair);background:var(--panel);transition:border-color .2s,box-shadow .2s,transform .2s}
+.fwp:last-child{flex-direction:row-reverse;text-align:right}
+.fwp b{font:650 1.02rem var(--ui);color:var(--pc)}
+.fwp small{margin-left:auto;font:500 .78rem var(--ui);color:var(--ink-3)}
+.fwp:last-child small{margin-left:0;margin-right:auto}
+.fwp.on{border-color:var(--pc);box-shadow:0 0 0 4px color-mix(in srgb,var(--pc) 14%,transparent)}
+.fwp .cans{display:inline-flex;gap:4px}
+.fwp .cans i{width:11px;height:16px;border-radius:3px;background:var(--pc);box-shadow:inset 0 -5px 0 rgba(255,255,255,.55)}
+.fwp .cans i.gone{background:transparent;border:1.5px dashed color-mix(in srgb,var(--pc) 45%,var(--line));box-shadow:none}
+.fwhist{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.fwhc{padding:12px 16px;border-radius:14px;border:1px solid var(--hair);background:var(--panel)}
+.fwhc b{font:650 .86rem var(--ui);color:var(--pc)}
+.fwhc ol{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:6px}
+.fwhc li{display:flex;justify-content:space-between;gap:10px;font:400 .92rem/1.35 var(--serif);color:var(--ink-2)}
+.fwhc li em{font:500 .76rem var(--ui);color:var(--ink-3);white-space:nowrap}
+.fwhc p{margin:8px 0 0;font:400 .85rem var(--ui);color:var(--ink-3)}
+.fwrules{margin:4px 0 18px;padding:12px 16px;border-radius:14px;border:1px solid var(--hair);background:var(--panel);font:400 .98rem/1.55 var(--serif);color:var(--ink-2)}
+.fwrules summary{cursor:pointer;font:600 .88rem var(--ui);color:var(--ink)}
+/* Spiel-Hinweis (Start, Station) */
+.gamecta.fwcta{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:16px 22px;text-decoration:none;color:var(--ink);padding:14px 22px 14px 16px;transition:border-color .2s,transform .2s}
+.gamecta.fwcta:hover{border-color:var(--ink-3)}
+.gamecta.fwcta small{display:block;font:600 .7rem/1 var(--ui);letter-spacing:.06em;color:var(--gold);margin-bottom:5px}
+.gamecta.fwcta b{font-size:1.15rem}
+.gamecta.fwcta span:not(.btn):not(.fwcta-art){display:block;color:var(--ink-2);margin-top:3px}
+.fwcta-art{width:150px;color:var(--ink-3);line-height:0}
+.fwcta-art svg{width:100%;height:auto}
+.gamecta.fwcta.sm{margin:18px 0}
+@media (max-width:640px){.gamecta.fwcta{grid-template-columns:1fr}.fwcta-art{width:120px}.fwscore,.fwhist{grid-template-columns:1fr}.fwp:last-child{flex-direction:row;text-align:left}.fwp:last-child small{margin-left:auto;margin-right:0}.fwctl{padding:14px 14px 6px}.fwst>.fwtabs,.fwst>.fwhead,.fwst>.fwq,.fwinfo,.fwsay,.fwopts{padding-left:14px;padding-right:14px}.fwban{white-space:normal;width:max-content;max-width:86%;text-align:center}}
+/* Schiene */
+.rail a.rgame{display:grid;grid-template-columns:30px 1fr;grid-template-rows:auto auto;column-gap:8px;align-items:center;margin:14px 0 4px;padding:10px 10px;border-radius:12px;border:1px solid var(--hair);background:color-mix(in srgb,var(--gold) 6%,var(--panel));text-decoration:none;color:var(--ink)}
+.rail a.rgame span{grid-row:span 2;width:30px;height:30px;display:grid;place-items:center;border-radius:9px;background:var(--ink);color:var(--panel)}
+.rail a.rgame span svg{width:18px;height:18px}
+.rail a.rgame b{font:650 .88rem/1.2 var(--ui)}
+.rail a.rgame small{font:500 .74rem/1.2 var(--ui);color:var(--ink-3)}
+.rail a.rgame[aria-current="page"]{border-color:var(--ink)}
+/* Spielmodus-Seite */
+.gm .gmhero{display:flex;align-items:center;justify-content:space-between;gap:20px;border-radius:24px;padding:clamp(22px,4vw,40px);background:radial-gradient(130% 150% at 15% 0%,var(--sc-b),var(--sc-a) 65%);color:#E6F0F3;box-shadow:var(--shadow)}
+.gm .hk{font:600 .72rem/1 var(--ui);letter-spacing:.08em;color:#8AA3B2}
+.gm h1{font:650 clamp(1.7rem,5.4vw,3.6rem)/1.05 var(--ui);letter-spacing:-.035em;margin:12px 0 0}
+.gm h1 em{font-style:normal;color:#F2C14E}
+.gm .hl{font:400 clamp(1rem,1.6vw,1.2rem)/1.5 var(--serif);color:#B9CBD6;max-width:30em;margin:12px 0 0}
+.gmart{width:min(260px,30vw);color:#B9CBD6;line-height:0;flex:none}.gmart svg{width:100%;height:auto}
+.gmtabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 6px}
+.gmtabs a{display:flex;flex-direction:column;gap:3px;padding:12px 16px;border-radius:14px;border:1px solid var(--hair);background:var(--panel);text-decoration:none;color:var(--ink);transition:border-color .2s}
+.gmtabs a b{font:650 .98rem var(--ui)}.gmtabs a small{font:500 .8rem var(--ui);color:var(--ink-3)}
+.gmtabs a[aria-current="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.gmworlds{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin:14px 0}
+.gmw{padding:16px;border-radius:16px;border:1px solid var(--hair);background:var(--panel);cursor:pointer;display:flex;flex-direction:column;gap:6px;transition:border-color .2s}
+.gmw:hover{border-color:var(--ink-3)}
+.gmw.cur{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.gmw small{font:600 .7rem/1 var(--ui);letter-spacing:.06em;color:var(--gold)}
+.gmw b{font:650 1.08rem var(--ui)}
+.gmw p{margin:0;font:400 .9rem/1.45 var(--serif);color:var(--ink-2);flex:1}
+.gmlv{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.gml{display:flex;flex-direction:column;align-items:center;min-width:38px;padding:5px 6px;border-radius:10px;border:1px solid var(--hair);background:var(--panel-2);font:650 .8rem var(--ui);color:var(--ink-2);cursor:pointer}
+.gml small{font-size:.62rem;color:var(--gold);min-height:1em}
+.gml.won{background:color-mix(in srgb,var(--gold) 12%,var(--panel));color:var(--ink)}
+.gmbar{height:4px;border-radius:2px;background:var(--panel-2);overflow:hidden;margin-top:8px}.gmbar i{display:block;height:100%;background:var(--gold)}
+.gmsum{font:500 .74rem var(--ui);color:var(--ink-3)}
+.gmh{font:650 1.1rem var(--ui);margin:22px 0 0;scroll-margin-top:70px}
+.gmlead{font:400 1.02rem/1.5 var(--serif);color:var(--ink-2);margin:14px 0 0}
+@media (max-width:640px){.gm .gmhero{flex-direction:column;align-items:flex-start}.gmart{width:160px}.gmtabs{grid-template-columns:1fr}.gmtabs a small{display:none}}
+
 </style>
 </head>
 <body>
@@ -1636,7 +1761,7 @@ const STU = MODE === 'S', PK = 'om5q-prog-' + MODE, FK = 'om5q-found-' + MODE;
 let PROG = LS.get(PK, {}); const FOUND = new Set(LS.get(FK, []));
 const PARTS = [], ST = [];
 function part(nr, title, sub) { PARTS.push({ nr, title, sub }); }
-function station(def) { def.steps.forEach((s, i) => s.oi = i); ST.push(def); def.nr = ST.length; }
+function station(def) { let k = 0; def.steps.forEach(s => { if (s.oi == null) s.oi = k++; }); ST.push(def); def.nr = ST.length; }
 const pg = id => PROG[id] || (PROG[id] = { d: [], l: 0 });
 const isDone = (id, i) => pg(id).d.includes(i);
 const ratio = def => Math.min(1, pg(def.id).d.length / def.steps.length);
@@ -1805,6 +1930,7 @@ function updTop() { document.querySelector('.prog').style.width = (100 * DONE() 
 let RAIL = [];
 function buildRail() {
   const rail = document.querySelector('.rail');
+  rail.append(h('a', { class: 'rgame', href: '#spiel' }, h('span', { html: FW_ICON }), h('b', {}, 'Spielmodus'), h('small', {}, 'Meisenschleuder')));
   PARTS.forEach(pt => {
     rail.append(h('h2', {}, `Teil ${pt.nr} · ${pt.title}`)); const ol = h('ol', { class: 'rtrail' });
     ST.filter(d => d.part === pt.nr).forEach(d => { const a = h('a', { class: 'st', href: '#' + d.id, 'data-id': d.id }, h('span', { class: 'n' }, h('span', {}, d.nr)), h('span', { class: 'rt' }, d.short, d.d3 ? h('span', { class: 'd3' }, '3D') : null)); RAIL.push([d, a]); ol.append(h('li', {}, a)); });
@@ -1814,6 +1940,7 @@ function buildRail() {
 }
 function updRail() {
   RAIL.forEach(([d, a]) => { const r = ratio(d); a.style.setProperty('--p', r); a.classList.toggle('full', r >= 1); a.classList.toggle('part', r > 0 && r < 1); if (CUR && CUR.def === d) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
+  document.querySelectorAll('.rgame').forEach(a => { if (CURRENT === 'spiel') a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   const rs = document.querySelector('.rstat'); if (rs) rs.innerHTML = `<b>${DONE()}</b> von ${TOTAL()} Schritten · <b>${FOUND.size}</b> Entdeckungen`;
 }
 
@@ -1885,8 +2012,7 @@ function buildStart() {
   TICKS.push({ id: 'start', fn: (dt, t) => draw(t, dt) }); draw(3);
   sec.append(h('div', { class: 'hero' }, sv, h('div', { class: 'ht' }, h('div', { class: 'hk' }, 'OpenMath · ' + (STU ? 'Schülermodul' : 'Lehrermodul') + ' 5. Klasse AHS · Quadratische Funktionen'), h('h1', { html: 'Ein Quadrat mehr, und die Gerade <em>wird zum Bogen</em>' }), h('p', { class: 'hl' }, 'Bisher waren alle Graphen Geraden. Kommt ein x² dazu, entsteht eine Parabel: die Bahn jedes Wurfs, jedes Wasserstrahls, jedes Sprungs. Dieses Kapitel zeigt, was ihre drei Zahlen bedeuten, wo sie im Alltag stecken und wie man quadratische Gleichungen löst, mit einem Trick, den es seit fast 4000 Jahren gibt.')), h('div', { class: 'hr' }, h('span', { class: 'hr-k' }, 'Diese Parabel'), eq, h('span', { class: 'hr-h' }, 'Zieh am gelben Scheitel'))));
   const resume = h('div', { class: 'resume' }); sec.append(resume);
-  const sl = ST.find(d => d.id === 'schleuder'), gi = sl ? sl.steps.findIndex(x => x.kind === 'spiel') : -1;
-  if (gi >= 0) sec.append(h('div', { class: 'gamecta' }, h('div', {}, h('b', {}, 'Dosenwerfen mit der Schleuder'), h('span', {}, 'Sechs Level, nach jedem Schuss steht die Gleichung der Bahn da. Zum Ausprobieren am iPad.')), h('a', { class: 'btn primary big', href: `#schleuder/${gi + 1}` }, 'Zum Spiel')));
+  sec.append(h('a', { class: 'gamecta fwcta', href: '#spiel' }, h('span', { class: 'fwcta-art', html: FW_CTA_ART }), h('div', {}, h('small', {}, 'Spielmodus'), h('b', {}, 'Die Meisenschleuder'), h('span', {}, 'Gleichung eintippen, die Meise fliegt sie nach. Vier Welten, ein Duell für zwei Teams und Freihand-Schießen.')), h('span', { class: 'btn primary big' }, 'Spielen')));
   const mapBox = h('div', { class: 'mapbox' }); sec.append(h('div', { class: 'block' }, h('h3', { class: 'maph' }, 'Der Pfad durch das Kapitel'), h('p', { class: 'mapsub' }, `${ST.length} Stationen in ${PARTS.length} Teilen. Jede Station besteht aus wenigen kurzen Schritten.`), mapBox));
   const list = h('div', { class: 'pgrid mlist' }); sec.append(list);
   sec.append(h('div', { class: 'howto' },
@@ -1919,6 +2045,7 @@ function setMode(m) {
 }
 function route() {
   const hs = decodeURIComponent(location.hash.slice(1)); if (!hs || hs === 'start') return showStart();
+  if (hs === 'spiel' || hs.startsWith('spiel/')) return showGame(hs.split('/')[1]);
   const [id, k] = hs.split('/'), def = ST.find(d => d.id === id); if (!def) return showStart();
   const open = def.steps.findIndex((_, j) => !isDone(id, j));
   show(id, k ? (+k - 1) : (open >= 0 ? open : 0));
@@ -1950,6 +2077,7 @@ function boot() {
     if (e.target.closest && e.target.closest('input,select,textarea,dialog')) return; if (e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'b' || e.key === 'B') { if (MAXED) unmax(); else if (CUR) { const B = BUILT[CUR.def.id], pan = B && B.panels[CUR.i], st = pan && pan.querySelector('.stage.has-max'); if (st) maxStage(st, pan); } return; }
     if (e.key === '?') { keyHelp(); return; }
+    if (CURRENT === 'spiel') return;
     if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); stepBy(1); }
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); stepBy(-1); }
     else if ((e.key === 'l' || e.key === 'L') && !STU) document.querySelector('[data-a=regie]').click();
@@ -1976,6 +2104,10 @@ const KERN = {
   'normal:1': { h: 'Die Parabel ist spiegelgleich.', s: `${V('x')} und −${V('x')} haben denselben Funktionswert. Die Spiegelachse durch den Scheitel heißt ${G('symm', 'Symmetrieachse')}.` },
   'pa:0': { h: `${V('a')} entscheidet über Richtung und Weite.`, s: `Das Vorzeichen sagt, ob die Parabel oben oder unten offen ist. Der ${G('betrag', `Betrag |${V('a')}|`)} sagt, ob sie eng oder weit ist.` },
   'pa:2': { h: `|${V('a')}| &gt; 1 macht die Parabel enger, |${V('a')}| &lt; 1 weiter.`, s: `Die ${G('betrag', 'Betragsstriche')} lassen das Minus weg. Ein negatives ${V('a')} klappt die Parabel nur nach unten.` },
+  'pc:10': { h: `${V('c')} ist die Starthöhe.`, s: `Bei ${V('x')} = 0 bleibt nur ${V('c')} übrig: ${V('f')}(0) = ${V('c')}. Steht die Schleuder höher, wird ${V('c')} größer. Im Graben ist ${V('c')} negativ.` },
+  'pa:10': { h: `${V('a')} nahe bei null: Die Meise fliegt weit.`, s: `Beim waagrechten Wurf ist ${V('f')}(${V('x')}) = ${V('a')}${V('x')}² + ${V('c')}. Je kleiner |${V('a')}|, desto langsamer fällt die Bahn ab.` },
+  'pb:10': { h: `Scheitelform: ${V('f')}(${V('x')}) = ${V('a')} · (${V('x')} − ${V('x')}<sub>S</sub>)² + ${V('y')}<sub>S</sub>`, s: `Der Scheitel S(${V('x')}<sub>S</sub> | ${V('y')}<sub>S</sub>) steht direkt in der Gleichung. Achtung: In der Klammer steht ein Minus, S(3 | 2) ergibt (${V('x')} − 3)².` },
+  'schleuder:10': { h: 'Erst die Gleichung, dann der Schuss.', s: `Den Scheitel über das Hindernis legen, dann mit ${V('a')} die Weite einstellen.` },
   'pc:0': { h: `${V('c')} schiebt die Parabel hinauf oder hinunter.`, s: `Die Form bleibt gleich. Die Parabel schneidet die senkrechte Achse im ${G('punkt', `Punkt (0 | ${V('c')})`)}.` },
   'pb:0': { h: `${V('b')} schiebt den Scheitel schräg.`, s: 'Zur Seite und zugleich nach unten. Die Form bleibt die der Normalparabel.' },
   'pb:2': { h: `Symmetrieachse: ${V('x')} = ${FR('−' + V('b'), '2' + V('a'))}`, s: `Der ${G('bruch', 'Bruchstrich')} heißt „dividiert durch“. Setzt man diese Stelle in ${V('f')} ein, erhält man den ${G('scheitel', 'Scheitel')}.` },
@@ -2858,6 +2990,14 @@ station({
       }
     },
     {
+      oi: 10, t: 'a beim waagrechten Wurf', kind: 'spiel', why: `Vom Felsen geht der Schuss waagrecht los. Der Scheitel sitzt deshalb genau an der Schleuder, und die Gleichung ist ${M('f')}(${xx}) = ${M('a')}${xx}² + 8. Wie weit die Meise kommt, entscheidet nur ${M('a')}.`,
+      task: 'Triff die Dose in allen drei Level.',
+      build(el, s) {
+        el.append(fwPlay(s, { ids: ['h1', 'h2', 'h3'], need: 3, doneMsg: `<b>Alle drei getroffen.</b> Je näher ${M('a')} bei null liegt, desto weiter fliegt die Meise.` }).el,
+          prose(`Vergleiche die drei Werte: −0,5 für 4 m, −0,08 für 10 m, −0,02 für 20 m. Ein großes |${M('a')}| heißt eine enge Parabel, die Meise fällt schnell. Ein kleines |${M('a')}| heißt eine weite Parabel, der Schuss war kräftig.`));
+      }
+    },
+    {
       t: 'Vorzeichen und Betrag', kind: 'denke', why: 'Zwei Eigenschaften in einer Zahl: Das führt leicht zu Verwechslungen. Felix ist schon hineingetappt.',
       task: 'Kreuze die beiden richtigen Aussagen an.',
       build(el, s) {
@@ -2908,6 +3048,14 @@ station({
       }
     },
     {
+      oi: 10, t: 'c ist die Starthöhe', kind: 'spiel', why: 'Die Meise fliegt genau die Parabel, die in der Gleichung steht. Hier sind a und b fest, nur c tippst du ein. Achte darauf, wo die Schleuder dann steht: am Boden, auf einem Stein, oben auf dem Felsen oder unten im Graben.',
+      task: 'Schaffe drei der vier Level.',
+      build(el, s) {
+        el.append(fwPlay(s, { ids: ['c1', 'c2', 'c3', 'c4'], need: 3, doneMsg: `<b>Drei Level geschafft.</b> ${M('c')} ist die Höhe, aus der die Meise startet: ${M('f')}(0) = ${M('c')}.` }).el,
+          merke(rule('c ist die Starthöhe', `Setzt man ${xx} = 0 ein, bleibt nur ${M('c')} übrig: ${M('f')}(0) = ${M('c')}. Steht die Schleuder höher, wird ${M('c')} größer. Liegt der Start unter dem Boden, ist ${M('c')} negativ.`, 'gold')));
+      }
+    },
+    {
       t: 'c ablesen', kind: 'probiere', why: 'Setzt man x = 0 ein, fallen das x²- und das x-Glied weg, und es bleibt c übrig. Genau dieselbe Rolle hatte d bei der Geraden.',
       task: 'Lies die drei Werte ab, ohne zu zeichnen.',
       build(el, s) {
@@ -2954,6 +3102,15 @@ station({
         upd();
       },
       ext: [ext('warum', 'Warum die Achse bei <span class="frac"><span>−<span class="m">b</span></span><span>2<span class="m">a</span></span></span> liegt', { html: `<p>Suche zwei Stellen mit demselben Funktionswert, zum Beispiel ${M('f')}(${xx}) = ${M('c')}. Das ergibt ${M('a')}${xx}² + ${M('b')}${xx} = 0, also ${xx}(${M('a')}${xx} + ${M('b')}) = 0 mit den Lösungen ${xx} = 0 und ${xx} = −${M('b')}/${M('a')}.</p><p>Wegen der Symmetrie liegt die Achse genau in der Mitte zwischen beiden: bei −${M('b')}/(2${M('a')}).</p>` })]
+    },
+    {
+      oi: 10, t: 'Die Scheitelform', kind: 'spiel', why: `Eine Parabel lässt sich auch über ihren Scheitel anschreiben. Der Scheitel S steht dann direkt in der Gleichung. Hier ist ${M('a')} = −0,1 fest, du tippst nur den Scheitel ein.`,
+      task: 'Schaffe drei der vier Level.',
+      build(el, s) {
+        el.append(merke(rule('Die Scheitelform', `${M('f')}(${xx}) = ${M('a')} · (${xx} − ${xx}<sub>S</sub>)² + ${M('y')}<sub>S</sub><br>Scheitel S(${xx}<sub>S</sub> | ${M('y')}<sub>S</sub>). Für ${xx} = ${xx}<sub>S</sub> wird die Klammer null, also ist ${M('f')}(${xx}<sub>S</sub>) = ${M('y')}<sub>S</sub>.`, 'dx')),
+          fwPlay(s, { ids: ['s1', 's2', 's3', 's4'], need: 3, doneMsg: '<b>Drei Level geschafft.</b> Wer den Scheitel kennt, kann die Bahn direkt anschreiben.' }).el,
+          felix(`Der Scheitel von ${M('f')}(${xx}) = −0,1 · (${xx} − 8)² + 9 liegt bei S(−8 | 9).`, [`In der Klammer steht ein Minus. ${xx} − 8 wird null, wenn ${xx} = 8 ist. Der Scheitel liegt also bei S(8 | 9). Steht in der Klammer ${xx} + 8, dann liegt er bei ${xx} = −8.`]));
+      }
     }
   ]
 });
@@ -3078,6 +3235,14 @@ station({
       task: 'Triff den Ballon.',
       build(el, s) { el.append(sling(s, { level: 4, show: { axes: true, full: true, vertex: true, zero: false, tangent: false, c: false }, onWin: () => s.done('<b>Plopp.</b> Der Scheitel lag beim Ballon.') }).el); },
       ext: [ext('trivia', 'Was die Flugzeit bestimmt', { html: '<p>Wie lange der Knödel in der Luft ist, hängt nur davon ab, wie schnell er am Anfang <b>nach oben</b> fliegt. Wie schnell er nach vorne fliegt, ändert daran nichts. Ein waagrecht abgefeuerter und ein gleichzeitig fallen gelassener Knödel landen aus derselben Höhe gleichzeitig. Das hat schon Galilei erkannt.</p>' })]
+    },
+    {
+      oi: 10, t: 'Erst die Gleichung, dann der Schuss', kind: 'spiel', why: `Jetzt umgekehrt: Du tippst die Bahn in Scheitelform ein, ${M('f')}(${xx}) = ${M('a')} · (${xx} − ${xx}<sub>S</sub>)² + ${M('y')}<sub>S</sub>, und die Meise fliegt sie nach. Die Hebebühne stellt die Schleuder auf die Starthöhe ${M('f')}(0).`,
+      task: 'Schaffe zwei der drei Level.',
+      build(el, s) {
+        el.append(fwPlay(s, { ids: ['v1', 'v3', 'v4'], need: 2, doneMsg: '<b>Zwei Level geschafft.</b> Im Spielmodus wartet das Duell.' }).el,
+          h('a', { class: 'gamecta fwcta sm', href: '#spiel' }, h('span', { class: 'fwcta-art', html: FW_CTA_ART }), h('div', {}, h('small', {}, 'Spielmodus'), h('b', {}, 'Duell zu zweit und vier Welten'), h('span', {}, 'Zwei Teams, eine Mauer, drei Dosen pro Seite. Wer trifft zuerst?')), h('span', { class: 'btn primary' }, 'Zum Spielmodus')));
+      }
     },
     {
       t: 'Freies Spiel: sechs Level', kind: 'spiel', why: 'Sechs Level, jedes mit einer anderen Aufgabe für die Parabel. Nach jedem Schuss steht die Gleichung deiner Bahn da. Mit „Hilfslinien“ erscheinen Achsen, Scheitel und Nullstelle.',
@@ -3787,11 +3952,11 @@ Object.entries(EXPL).forEach(([id, m]) => { const d = ST.find(q => q.id === id);
 const MODEMAP = {
   strahl: { L: [0, 2], S: [0, 1, 2] },
   normal: { L: [0, 1], S: [0, 1] },
-  pa: { L: [0, 2], S: [0, 1, 2] },
-  pc: { L: [0], S: [0, 1] },
-  pb: { L: [0, 2], S: [0, 2] },
+  pa: { L: [0, 10, 2], S: [0, 1, 10, 2] },
+  pc: { L: [0, 10], S: [0, 10, 1] },
+  pb: { L: [0, 2, 10], S: [0, 2, 10] },
   detektiv: { L: [1, 2], S: [0, 1, 2] },
-  schleuder: { L: [0, 1, 6], S: [0, 1, 5, 6] },
+  schleuder: { L: [0, 1, 10, 6], S: [0, 1, 5, 10, 6] },
   wurf: { L: [0, 1], S: [0, 1, 2] },
   brems: { L: [0, 1], S: [1, 2] },
   max: { L: [0, 1], S: [0, 1, 2] },
@@ -3874,7 +4039,7 @@ const LW = {
     0: ol('Fehlt das x-Glied, also steht nur x² und eine Zahl da: nach x² auflösen und ± Wurzel ziehen.', 'Fehlt die Zahl: x herausheben. Eine Lösung ist dann immer 0.', 'Sind alle drei Glieder da: Lösungsformel.')
   }
 };
-Object.entries(LW).forEach(([id, m]) => { const d = ST.find(q => q.id === id); if (!d) return; Object.entries(m).forEach(([i, html]) => { if (d.steps[+i]) d.steps[+i].lw = html; }); });
+Object.entries(LW).forEach(([id, m]) => { const d = ST.find(q => q.id === id); if (!d) return; Object.entries(m).forEach(([i, html]) => { const st = d.steps.find(q => q.oi === +i); if (st) st.lw = html; }); });
 
 function applyMode() {
   ST.forEach(d => {
@@ -3882,6 +4047,637 @@ function applyMode() {
     if (!STU && REGIE_L[d.id]) d.regie = REGIE_L[d.id];
     if (STU) d.regie = null;
   });
+}
+
+
+/* ================= Formelwurf: Gleichung eintippen, die Meise fliegt sie nach ================= */
+const FWS = LS.get('om5q-fw', {});
+let FWN = 0;
+const FW_FORMS = {
+  c: { keys: ['c'] },
+  h: { keys: ['a'] },
+  s: { keys: ['xs', 'ys'] },
+  v: { keys: ['a', 'xs', 'ys'] }
+};
+const FW_KEYLAB = { a: M('a'), c: M('c'), xs: M('x') + '<sub>S</sub>', ys: M('y') + '<sub>S</sub>' };
+const FW_STEP = { a: .01, c: .5, xs: .5, ys: .5 };
+/* Koeffizienten aus der eingetippten Form */
+function fwCoef(form, fx, p) {
+  let A, B, C;
+  if (form === 'c') { A = fx.a; B = fx.b; C = p.c; }
+  else if (form === 'h') { A = p.a; B = 0; C = fx.h; }
+  else { const a = form === 's' ? fx.a : p.a; A = a; B = -2 * a * p.xs; C = a * p.xs * p.xs + p.ys; }
+  const xs = A ? -B / (2 * A) : 0, ys = A ? C - B * B / (4 * A) : C;
+  return { A, B, C, xs, ys, f: x => A * x * x + B * x + C, d: x => 2 * A * x + B };
+}
+/* Gleichung schön gesetzt, mit Komma und echtem Minus */
+function fwEqHtml(form, fx, p) {
+  const n = v => fmt(v, 3), sg = (v, first) => first ? (v < 0 ? '−' : '') + n(Math.abs(v)) : (v < 0 ? ' − ' : ' + ') + n(Math.abs(v));
+  const F = `${M('f')}(${M('x')}) = `;
+  if (form === 'c') return F + sg(fx.a, true) + M('x') + '²' + sg(fx.b) + M('x') + sg(p.c);
+  if (form === 'h') return F + sg(p.a, true) + M('x') + '²' + sg(fx.h);
+  const a = form === 's' ? fx.a : p.a, inner = Math.abs(p.xs) < 1e-12 ? M('x') : `(${M('x')}${sg(-p.xs)})`;
+  return F + sg(a, true) + ' · ' + inner + '²' + (Math.abs(p.ys) < 1e-12 ? '' : sg(p.ys));
+}
+
+/* ---------- Level ---------- */
+const FWL = {};
+const fwLv = (id, L) => { L.id = id; FWL[id] = L; return L; };
+const CAN = (x, y = 0, tag) => ({ x: x - .4, y, w: .8, h: 1.05, k: 'can', tag });
+const CANS3 = (x, y) => [CAN(x - .45, y), CAN(x + .45, y), CAN(x, y + 1.05)];
+/* Welt 1: c ist die Starthöhe */
+fwLv('c1', { n: 'Am Boden', form: 'c', fx: { a: -.05, b: .8 }, plat: { h: 0 }, init: { c: 0 }, x1: 26, y1: 12,
+  q: 'Die Schleuder steht direkt am Boden, ihre Gabel ist 1 m hoch. Dort sitzt die Meise. Welches <span class="m">c</span> gehört dazu?', blocks: [CAN(17.2)], sol: { c: 1 } });
+fwLv('c2', { n: 'Auf dem Stein', form: 'c', fx: { a: -.05, b: .8 }, plat: { h: 2 }, init: { c: 1 }, x1: 26, y1: 12,
+  q: 'Jetzt steht die Schleuder auf einem 2 m hohen Stein. Wie groß ist <span class="m">c</span> jetzt?', blocks: [CAN(19.1)], sol: { c: 3 } });
+fwLv('c3', { n: 'Wie hoch hinauf?', form: 'c', fx: { a: -.05, b: .8 }, plat: 'auto', init: { c: 1 }, x1: 26, y1: 13,
+  q: 'Die Dose steht 20 m entfernt. Tippe ein <span class="m">c</span> ein: Die Schleuder klettert auf die passende Höhe. Probieren ist erlaubt.', blocks: [CAN(20, 0, 'x = 20')], sol: { c: 4 } });
+fwLv('c4', { n: 'Aus dem Graben', form: 'c', fx: { a: -.05, b: .8 }, plat: 'auto', init: { c: 1 }, x1: 26, y1: 12,
+  q: 'Diesmal steht die Dose näher, bei 14,6 m. Die Schleuder muss dafür tiefer stehen als der Boden. Was heißt das für <span class="m">c</span>?', blocks: [CAN(14.6, 0, 'x = 14,6')], sol: { c: -1 } });
+fwLv('c5', { n: 'Über die hohe Mauer', form: 'c', fx: { a: -.05, b: .8 }, plat: 'auto', init: { c: 1 }, x1: 27, y1: 14,
+  q: 'Eine 7,6 m hohe Mauer steht im Weg, die Dose wartet bei 21,6 m. Wie hoch muss die Schleuder stehen?', blocks: [{ x: 9.5, y: 0, w: 1, h: 7.6, k: 'wall' }, CAN(21.6, 0, 'x = 21,6')], sol: { c: 6 } });
+/* Welt 2: a beim waagrechten Wurf */
+const CLIFF8 = { h: 7, k: 'cliff' };
+fwLv('h1', { n: 'Vom Felsen', form: 'h', fx: { h: 8 }, plat: CLIFF8, init: { a: -.2 }, x1: 24, y1: 12,
+  q: 'Die Meise startet waagrecht von einem Felsen, 8 m über dem Boden. Der Scheitel liegt also genau an der Schleuder. Die Dose steht 10 m entfernt. Welches <span class="m">a</span> passt?', blocks: [CAN(10, 0, 'x = 10')], sol: { a: -.08 } });
+fwLv('h2', { n: 'Ganz nah', form: 'h', fx: { h: 8 }, plat: CLIFF8, init: { a: -.08 }, x1: 24, y1: 12,
+  q: 'Dieselbe Höhe, aber die Dose steht nur 4 m vom Felsen weg. Muss <span class="m">a</span> größer oder kleiner werden?', blocks: [CAN(4, 0, 'x = 4')], sol: { a: -.5 } });
+fwLv('h3', { n: 'Weit hinaus', form: 'h', fx: { h: 8 }, plat: CLIFF8, init: { a: -.08 }, x1: 24, y1: 12,
+  q: 'Jetzt soll die Meise 20 m weit fliegen. Ein kräftiger Schuss: Wohin wandert <span class="m">a</span>?', blocks: [CAN(20, 0, 'x = 20')], sol: { a: -.02 } });
+fwLv('h4', { n: 'Auf die Kiste', form: 'h', fx: { h: 9 }, plat: { h: 8, k: 'cliff' }, init: { a: -.1 }, x1: 24, y1: 13,
+  q: 'Der Felsen ist 9 m hoch. Die Dose steht auf einer 1,5 m hohen Kiste bei 12 m. Die Bahn muss bei <span class="m">x</span> = 12 also etwa 2 m hoch sein.', blocks: [{ x: 11, y: 0, w: 2, h: 1.5, k: 'crate' }, CAN(12, 1.5, '(12 | 1,5)')], sol: { a: -.05 } });
+/* Welt 3: der Scheitel, a ist fest */
+fwLv('s1', { n: 'Der Ballon', form: 's', fx: { a: -.1 }, plat: 'lift', init: { xs: 4, ys: 6 }, x1: 24, y1: 13,
+  q: 'Der Ballon schwebt im Punkt (8 | 9). Leg den Scheitel genau dorthin. Die Hebebühne fährt die Schleuder auf die Starthöhe <span class="m">f</span>(0).', blocks: [{ x: 7.15, y: 7.9, w: 1.7, h: 2.2, k: 'balloon', tag: '(8 | 9)' }], sol: { xs: 8, ys: 9 } });
+fwLv('s2', { n: 'Über die Mauer', form: 's', fx: { a: -.1 }, plat: 'lift', init: { xs: 4, ys: 6 }, x1: 24, y1: 13,
+  q: 'Die Mauer bei <span class="m">x</span> = 8 ist 8,5 m hoch, die Dose steht bei 18 m. Der höchste Punkt der Bahn sollte über der Mauer liegen.', blocks: [{ x: 7.5, y: 0, w: 1, h: 8.5, k: 'wall' }, CAN(18, 0, 'x = 18')], sol: { xs: 8, ys: 10 } });
+fwLv('s3', { n: 'Durch das Tor', form: 's', fx: { a: -.1 }, plat: 'lift', init: { xs: 6, ys: 9 }, x1: 24, y1: 13,
+  q: 'Bei <span class="m">x</span> = 10 ist nur eine Lücke zwischen 2,2 m und 5,6 m frei. Die Dose steht bei 13,4 m. Diesmal darf der Scheitel nicht zu hoch liegen.', blocks: [{ x: 9.5, y: 0, w: 1, h: 2.2, k: 'wall' }, { x: 9.5, y: 5.6, w: 1, h: 9, k: 'wall' }, CAN(13.4, 0, 'x = 13,4')], sol: { xs: 6, ys: 5.5 } });
+fwLv('s4', { n: 'Zwei Ballone', form: 's', fx: { a: -.1 }, plat: 'lift', init: { xs: 8, ys: 9 }, x1: 24, y1: 13,
+  q: 'Zwei Ballone, beide 9 m hoch, bei <span class="m">x</span> = 6 und <span class="m">x</span> = 14. Eine Parabel ist symmetrisch. Wo liegt also die Symmetrieachse?', blocks: [{ x: 5.15, y: 7.9, w: 1.7, h: 2.2, k: 'balloon', tag: '(6 | 9)' }, { x: 13.15, y: 7.9, w: 1.7, h: 2.2, k: 'balloon', tag: '(14 | 9)' }], sol: { xs: 10, ys: 10.6 } });
+/* Welt 4: Scheitelform komplett */
+fwLv('v1', { n: 'Hoch über die Mauer', form: 'v', plat: 'lift', init: { a: -.1, xs: 6, ys: 8 }, x1: 28, y1: 15,
+  q: 'Die Mauer ist 10 m hoch, die Dose steht bei 24 m. Jetzt darfst du alle drei Zahlen wählen.', blocks: [{ x: 11, y: 0, w: 1, h: 10, k: 'wall' }, CAN(24, 0, 'x = 24')], sol: { a: -.077, xs: 11.5, ys: 12 } });
+fwLv('v2', { n: 'Der Kirchturm', form: 'v', plat: 'lift', init: { a: -.1, xs: 6, ys: 8 }, x1: 28, y1: 15,
+  q: 'Oben auf dem 9 m hohen Turm bei <span class="m">x</span> = 14 steht eine Dose. Am leichtesten trifft man sie mit dem Scheitel.', blocks: [{ x: 13.1, y: 0, w: 1.8, h: 9, k: 'tower' }, CAN(14, 9, '(14 | 9)')], sol: { a: -.04, xs: 14, ys: 9.8 } });
+fwLv('v3', { n: 'Flach durchs Tor', form: 'v', plat: 'lift', init: { a: -.1, xs: 6, ys: 8 }, x1: 28, y1: 15,
+  q: 'Die Lücke im Tor bei <span class="m">x</span> = 12 reicht von 3 m bis 6 m. Die Dose steht weit hinten bei 21,5 m. Gesucht ist eine flache, weite Bahn.', blocks: [{ x: 11.5, y: 0, w: 1, h: 3, k: 'wall' }, { x: 11.5, y: 6, w: 1, h: 10, k: 'wall' }, CAN(21.5, 0, 'x = 21,5')], sol: { a: -.02, xs: 6, ys: 5 } });
+fwLv('v4', { n: 'Ballon und Dose', form: 'v', plat: 'lift', init: { a: -.1, xs: 6, ys: 8 }, x1: 28, y1: 15,
+  q: 'Eine einzige Bahn soll erst den Ballon bei (6 | 5,4) und dann die Dose auf der Kiste bei 18 m treffen.', blocks: [{ x: 5.15, y: 4.3, w: 1.7, h: 2.2, k: 'balloon', tag: '(6 | 5,4)' }, { x: 17.1, y: 0, w: 1.8, h: 2.6, k: 'crate' }, CAN(18, 2.6, '(18 | 2,6)')], sol: { a: -.04, xs: 10, ys: 6 } });
+fwLv('v5', { n: 'Generalprobe fürs Duell', form: 'v', plat: 'lift', init: { a: -.1, xs: 6, ys: 8 }, x1: 30, y1: 15,
+  q: 'So sieht es im Duell aus: Mauer in der Mitte, die Dosen stehen hinten auf einer Kiste. Tipp: Scheitel über die Mauer, dann mit <span class="m">a</span> die Weite einstellen.', blocks: [{ x: 13, y: 0, w: 1, h: 8, k: 'wall' }, { x: 25, y: 0, w: 2, h: 1.5, k: 'crate' }, ...CANS3(26, 1.5)], sol: { a: -.054, xs: 13, ys: 11 } });
+const FW_WORLDS = [
+  { n: 'Welt 1', t: 'Die Starthöhe c', s: 'Am Boden, auf dem Stein, im Graben: c verrät, wo die Meise losfliegt.', ids: ['c1', 'c2', 'c3', 'c4', 'c5'] },
+  { n: 'Welt 2', t: 'Die Weite a', s: 'Waagrecht vom Felsen. Je näher a bei null, desto weiter der Flug.', ids: ['h1', 'h2', 'h3', 'h4'] },
+  { n: 'Welt 3', t: 'Der Scheitel', s: 'Der höchste Punkt steht direkt in der Gleichung. Leg ihn dorthin, wo er gebraucht wird.', ids: ['s1', 's2', 's3', 's4'] },
+  { n: 'Welt 4', t: 'Alles zusammen', s: 'a und Scheitel frei wählbar. Hier wird für das Duell trainiert.', ids: ['v1', 'v2', 'v3', 'v4', 'v5'] }
+];
+
+/* ---------- Eingabezeile ---------- */
+function fwInput(form, fx, init, onChange, onEnter, accent) {
+  const vals = Object.assign({}, init), ins = {};
+  const el = h('div', { class: 'fwin', style: accent ? `--acc:${accent}` : '' });
+  const fld = k => {
+    const inp = h('input', { class: 'fwi', type: 'text', inputmode: 'decimal', autocomplete: 'off', spellcheck: 'false', enterkeyhint: 'go', 'aria-label': k === 'xs' ? 'x-Koordinate des Scheitels' : k === 'ys' ? 'y-Koordinate des Scheitels' : 'Parameter ' + k });
+    const pm = h('button', { type: 'button', class: 'fwpm', 'aria-label': 'Vorzeichen wechseln', html: '±' });
+    const size = () => { inp.style.width = Math.max(2.4, inp.value.length * .62 + 1.1) + 'em'; };
+    const read = () => { const v = parseNum(inp.value); inp.classList.toggle('bad', !isFinite(v)); if (isFinite(v)) { vals[k] = v; onChange(vals, k); } size(); };
+    inp.addEventListener('input', read);
+    inp.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); read(); onEnter(); }
+      else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') { e.preventDefault(); const st = FW_STEP[k] * (e.shiftKey ? 10 : 1), v = Math.round(((vals[k] || 0) + (e.key === 'ArrowUp' ? st : -st)) / st) * st; set1(k, v); onChange(vals, k); }
+    });
+    inp.addEventListener('focus', () => { try { inp.select(); } catch (_) { } });
+    pm.onclick = () => { const v = -(vals[k] || 0); set1(k, v); onChange(vals, k); };
+    ins[k] = { inp, size };
+    return h('span', { class: 'fwf' }, h('span', { class: 'fwbox' }, pm, inp), h('small', { html: FW_KEYLAB[k] }));
+  };
+  const set1 = (k, v) => { vals[k] = v; const I = ins[k]; I.inp.value = fmt(v, 3); I.inp.classList.remove('bad'); I.size(); };
+  const T = (html) => h('span', { class: 'fwt', html });
+  const n = v => (v < 0 ? '−' : '') + fmt(Math.abs(v), 3), op = v => v < 0 ? ' − ' : ' + ';
+  const F = T(`${M('f')}(${M('x')}) =&nbsp;`);
+  const G = (...k) => h('span', { class: 'fwg' }, ...k);
+  let parts;
+  if (form === 'c') parts = [F, G(T(`${n(fx.a)}${M('x')}²${op(fx.b)}${fmt(Math.abs(fx.b), 3)}${M('x')}`)), G(T('&nbsp;+&nbsp;'), fld('c'))];
+  else if (form === 'h') parts = [F, G(fld('a'), T(`&nbsp;· ${M('x')}²`)), G(T(`${op(fx.h)}${fmt(Math.abs(fx.h), 3)}`))];
+  else if (form === 's') parts = [F, G(T(`${n(fx.a)} ·&nbsp;`)), G(T(`(${M('x')} −&nbsp;`), fld('xs'), T(')²')), G(T('&nbsp;+&nbsp;'), fld('ys'))];
+  else parts = [F, G(fld('a'), T('&nbsp;·&nbsp;')), G(T(`(${M('x')} −&nbsp;`), fld('xs'), T(')²')), G(T('&nbsp;+&nbsp;'), fld('ys'))];
+  el.append(h('div', { class: 'fwrow' }, parts));
+  Object.keys(ins).forEach(k => set1(k, vals[k]));
+  return { el, get: () => Object.assign({}, vals), set(v) { Object.keys(ins).forEach(k => { if (v[k] != null) set1(k, v[k]); }); }, focus() { const f = Object.values(ins)[0]; if (f && matchMedia('(pointer:fine)').matches) f.inp.focus(); }, disable(on) { el.classList.toggle('off', on); Object.values(ins).forEach(I => I.inp.disabled = on); } };
+}
+
+/* ---------- Die Meise ---------- */
+function fwBird(par, kind, gid) {
+  const g = S('g', {}, par), b = S('g', {}, g);
+  const blue = kind === 'blau';
+  S('path', { d: 'M-11 1L-24 -4L-22 2L-25 6L-11 6Z', fill: blue ? '#3E6FB5' : '#41566B' }, b);
+  S('circle', { r: 14, fill: '#F3C432' }, b);
+  S('path', { d: 'M-14 -1A14 14 0 0 1 2 -13.9L-2 -3Q-8 2 -14 2Z', fill: blue ? '#5E9CDB' : '#7E9A55' }, b);
+  S('path', { d: 'M-12 2Q-5 -4 3 0Q-3 8 -11 7Z', fill: blue ? '#3F7FCB' : '#5B7895' }, b);
+  S('path', { d: 'M-7 1.5L1 -0.5', stroke: '#fff', 'stroke-width': 1.6, 'stroke-linecap': 'round', opacity: .9 }, b);
+  S('path', { d: 'M-1 -13.6A14 14 0 0 1 13.4 -4.2L5 -3.5Q1 -6 -1 -13.6Z', fill: blue ? '#3A79C9' : '#1E252D' }, b);
+  S('ellipse', { cx: 7, cy: -.5, rx: 5.6, ry: 4.4, fill: '#FBFBF7' }, b);
+  if (blue) S('path', { d: 'M1 -4.6Q7 -7 13.6 -3.4', fill: 'none', stroke: '#1F3A66', 'stroke-width': 1.8 }, b);
+  S('path', { d: 'M5.5 4.5Q7 9.5 4 13.2', fill: 'none', stroke: blue ? '#2A4F82' : '#1E252D', 'stroke-width': 3, 'stroke-linecap': 'round' }, b);
+  S('circle', { cx: 9.2, cy: -4.3, r: 2.6, fill: '#fff' }, b); S('circle', { cx: 9.8, cy: -4.2, r: 1.6, fill: '#121212' }, b); S('circle', { cx: 10.3, cy: -4.8, r: .55, fill: '#fff' }, b);
+  S('path', { d: 'M13.2 -2.4L19.5 -.4L13.4 1.6Z', fill: '#3A3530' }, b);
+  S('circle', { r: 14, fill: `url(#${gid})` }, b);
+  return g;
+}
+
+/* ---------- Arena ---------- */
+function fwArena(s, o) {
+  o = Object.assign({ preview: false, helps: true, onShot: null, onWin: null }, o);
+  const id = 'fw' + (++FWN), W = 1000;
+  const sv = S('svg', { class: 'plot game fwsvg', role: 'img', 'aria-label': 'Wurfbahn der Meise' });
+  const df = S('defs', {}, sv);
+  const grad = (gid, stops, v = true, extra = {}) => { const g = S(v === 'r' ? 'radialGradient' : 'linearGradient', Object.assign({ id: gid }, v === 'r' ? {} : { x1: 0, x2: v ? 0 : 1, y1: 0, y2: v ? 1 : 0 }, extra), df); stops.forEach(([o2, c, op]) => S('stop', { offset: o2, 'stop-color': c, 'stop-opacity': op == null ? 1 : op }, g)); return g; };
+  grad(id + 'sky', [[0, '#7DBFE6'], [.62, '#BFE2F0'], [1, '#E9F4EA']]);
+  grad(id + 'sun', [[0, '#FFF6D6', .95], [.35, '#FFE9A0', .55], [1, '#FFE9A0', 0]], 'r');
+  grad(id + 'shine', [[0, '#fff', .45], [.5, '#fff', 0], [1, '#000', .18]], 'r', { cx: .35, cy: .3, r: .8 });
+  grad(id + 'wood', [[0, '#9A6634'], [1, '#5E3A18']], false);
+  grad(id + 'rock', [[0, '#B4B9BD'], [1, '#7D858C']]);
+  grad(id + 'soil', [[0, '#8A6640'], [1, '#6B4C2C']]);
+  const L = n => S('g', {}, sv);
+  const gBg = L(), gCl = L(), gHill = L(), gGround = L(), gGrid = L(), gTer = L(), gCurve = L(), gBl = L(), gTr = L(), gSlB = L(), gBird = L(), gSlF = L(), gFx = L(), gAnn = L();
+  let V = null, lv = null, sides = [], act = 0, state = 'idle', fl = null, blocks = [], fx = [], clouds = [], shots = 0, helps = o.helps, preview = o.preview, lastShot = null;
+  const X = x => (x - V.x0) * V.k, Y = y => V.H - (y - V.y0) * V.k;
+  const banner = h('div', { class: 'fwban', hidden: true });
+
+  /* Kulisse */
+  function seeded(n) { let t = n * 9301 + 49297; return () => { t = (t * 9301 + 49297) % 233280; return t / 233280; }; }
+  function drawBg() {
+    gBg.innerHTML = ''; gHill.innerHTML = ''; gGround.innerHTML = ''; gCl.innerHTML = '';
+    const H = V.H, gy = Y(0);
+    S('rect', { width: W, height: H, fill: `url(#${id}sky)` }, gBg);
+    S('circle', { cx: W * .83, cy: H * .16, r: 110, fill: `url(#${id}sun)` }, gBg); S('circle', { cx: W * .83, cy: H * .16, r: 26, fill: '#FFF3C4' }, gBg);
+    const R = seeded(7);
+    const ridge = (hMin, hMax, step, fill, snow) => {
+      const pk = []; let x = -step * .5; while (x < W + step) { pk.push({ x, y: gy - (hMin + R() * (hMax - hMin)) * V.k / 29 }); pk.push({ x: x + step * (.45 + R() * .2), y: gy - (hMin * .45 + R() * hMin * .3) * V.k / 29 }); x += step * (.9 + R() * .4); }
+      S('path', { d: `M${pk[0].x} ${gy}` + pk.map(p => `L${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join('') + `L${W + step} ${gy}Z`, fill }, gBg);
+      if (!snow) return;
+      let sd = ''; for (let i = 0; i < pk.length; i += 2) { const p = pk[i], l = pk[i - 1] || { x: p.x - step / 2, y: gy }, r = pk[i + 1] || { x: p.x + step / 2, y: gy }; if (gy - p.y < 105 * V.k / 29) continue; const u = .26, lx = p.x + (l.x - p.x) * u, ly = p.y + (l.y - p.y) * u, rx = p.x + (r.x - p.x) * u, ry = p.y + (r.y - p.y) * u; sd += `M${lx.toFixed(1)} ${ly.toFixed(1)}L${p.x.toFixed(1)} ${p.y.toFixed(1)}L${rx.toFixed(1)} ${ry.toFixed(1)}L${(p.x + (rx - p.x) * .45).toFixed(1)} ${(ry - 5).toFixed(1)}L${p.x.toFixed(1)} ${(Math.max(ly, ry) + 2).toFixed(1)}L${(p.x + (lx - p.x) * .5).toFixed(1)} ${(ly - 4).toFixed(1)}Z`; }
+      S('path', { d: sd, fill: '#F5F9FC', opacity: .95 }, gBg);
+    };
+    ridge(85, 150, 150, '#BCD0DC', true);
+    ridge(55, 95, 110, '#A6C1CF', false);
+    S('path', { d: `M0 ${gy - 40}C150 ${gy - 95} 300 ${gy - 30} 470 ${gy - 70}S760 ${gy - 110} 880 ${gy - 55}S990 ${gy - 60} ${W} ${gy - 75}V${gy}H0Z`, fill: '#A9D49A' }, gHill);
+    S('path', { d: `M0 ${gy - 14}C200 ${gy - 44} 380 ${gy - 6} 560 ${gy - 30}S870 ${gy - 4} ${W} ${gy - 26}V${gy}H0Z`, fill: '#8CC57D' }, gHill);
+    const R3 = seeded(11); for (let i = 0; i < 16; i++) { const tx = R3() * W, base = gy - 18 - R3() * 26, th = 16 + R3() * 18; S('path', { d: `M${tx} ${base - th}L${tx + th * .38} ${base}H${tx - th * .38}Z`, fill: i % 3 ? '#4F8C57' : '#3F7A4A' }, gHill); }
+    S('rect', { x: 0, y: gy, width: W, height: H - gy + 2, fill: `url(#${id}soil)` }, gGround);
+    for (let yy = gy + 16; yy < H; yy += 13) S('path', { d: `M0 ${yy}Q${W / 4} ${yy - 3} ${W / 2} ${yy}T${W} ${yy}`, fill: 'none', stroke: 'rgba(60,38,18,.22)', 'stroke-width': 1.2 }, gGround);
+    S('rect', { x: 0, y: gy - 1, width: W, height: 8, fill: '#72AF55' }, gGround);
+    let tuft = ''; const R4 = seeded(5); for (let x = 4; x < W; x += 9 + R4() * 9) tuft += `M${x} ${gy}l${-2 - R4() * 2} ${-4 - R4() * 5}M${x} ${gy}l${2 + R4() * 2} ${-3 - R4() * 5}`;
+    S('path', { d: tuft, stroke: '#5E9A44', 'stroke-width': 1.6, 'stroke-linecap': 'round' }, gGround);
+    clouds = [0, 1, 2].map(i => { const g = S('g', { opacity: .92 }, gCl), sc = .7 + i * .22; [[0, 0, 26], [24, -10, 22], [46, 2, 24], [20, 8, 22]].forEach(([cx, cy, r]) => S('circle', { cx: cx * sc, cy: cy * sc, r: r * sc, fill: '#fff' }, g)); return { g, x: 90 + i * 340 + R() * 80, y: 40 + R() * Math.max(20, H * .2), v: 6 + i * 3 }; });
+  }
+  /* Koordinatensystem */
+  function drawGrid() {
+    gGrid.innerHTML = ''; if (!helps) return; const sd = sides[act]; if (!sd) return;
+    const toW = sd.toW, xmax = sd.reach, gy = Y(0), st = V.k < 26 ? 4 : 2;
+    S('line', { x1: X(toW(0)), x2: X(toW(0)), y1: gy, y2: Y(V.y1 - .6), stroke: 'rgba(15,30,46,.38)', 'stroke-width': 1.4, 'stroke-dasharray': '4 5' }, gGrid);
+    for (let m = 1; m <= xmax - 1.5; m++) { const big = m % st === 0; S('line', { x1: X(toW(m)), x2: X(toW(m)), y1: gy - (big ? 6 : 3), y2: gy + (big ? 6 : 3), stroke: '#24361F', 'stroke-width': big ? 2 : 1.2 }, gGrid); if (big) S('text', { x: X(toW(m)), y: gy + 24, 'text-anchor': 'middle', class: 'gtx', text: m }, gGrid); }
+    for (let m = 2; m <= V.y1 - 1; m += 2) { S('line', { x1: X(toW(0)) - 5, x2: X(toW(0)) + 5, y1: Y(m), y2: Y(m), stroke: 'rgba(15,30,46,.5)', 'stroke-width': 1.4 }, gGrid); S('text', { x: X(toW(0)) + (sd.dir > 0 ? -9 : 9), y: Y(m) + 5, 'text-anchor': sd.dir > 0 ? 'end' : 'start', class: 'gtx', text: m }, gGrid); }
+    if (!lv.duel) S('text', { x: X(toW(xmax)), y: gy - 12, 'text-anchor': 'end', class: 'gtx b', text: 'x in m' }, gGrid);
+    S('text', { x: X(toW(0)) + 8 * sd.dir, y: Y(V.y1 - .8), 'text-anchor': sd.dir > 0 ? 'start' : 'end', class: 'gtx b', text: 'y in m' }, gGrid);
+  }
+  /* Untergrund der Schleuder */
+  function drawPlat(sd) {
+    const g = sd.gP; g.innerHTML = ''; const xw = sd.toW(0), b = sd.base, kind = sd.platK;
+    if (kind === 'lift') {
+      const top = Math.max(0, b), w = 2.1, car = .5;
+      S('rect', { x: X(xw - w / 2 - .1), y: Y(car), width: (w + .2) * V.k, height: car * V.k, rx: 4, fill: '#3F4A55' }, g);
+      [-.7, .7].forEach(dx => { S('circle', { cx: X(xw + dx), cy: Y(0) - 5, r: 5.5, fill: '#1F262D' }, g); S('circle', { cx: X(xw + dx), cy: Y(0) - 5, r: 2, fill: '#9AA5AF' }, g); });
+      const h0 = car, h1 = Math.max(car + .05, top - .18), n = Math.max(1, Math.round((h1 - h0) / 1.3)), sh = (h1 - h0) / n;
+      let d = ''; for (let i = 0; i < n; i++) { const ya = h0 + i * sh, yb = ya + sh; d += `M${X(xw - w / 2 + .15)} ${Y(ya)}L${X(xw + w / 2 - .15)} ${Y(yb)}M${X(xw + w / 2 - .15)} ${Y(ya)}L${X(xw - w / 2 + .15)} ${Y(yb)}`; }
+      if (h1 - h0 > .1) S('path', { d, stroke: '#D9A21F', 'stroke-width': 5, 'stroke-linecap': 'round' }, g);
+      S('rect', { x: X(xw - w / 2 - .15), y: Y(Math.max(top, car + .05)), width: (w + .3) * V.k, height: .2 * V.k, rx: 3, fill: '#E9B530', stroke: '#9A7212', 'stroke-width': 1.5 }, g);
+      return;
+    }
+    if (kind === 'cliff') {
+      const top = b, x1c = xw + .9 * sd.dir, xa = sd.dir > 0 ? X(V.x0) - 4 : X(V.x1) + 4;
+      const pts = [[xa, Y(0)], [xa, Y(top)], [X(x1c - .2 * sd.dir), Y(top)], [X(x1c + .05 * sd.dir), Y(top - .7)], [X(x1c - .15 * sd.dir), Y(top - 1.6)], [X(x1c + .25 * sd.dir), Y(top * .55)], [X(x1c + .05 * sd.dir), Y(top * .3)], [X(x1c + .5 * sd.dir), Y(0)]];
+      S('path', { d: 'M' + pts.map(p => p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join('L') + 'Z', fill: `url(#${id}rock)`, stroke: '#646B72', 'stroke-width': 2, 'stroke-linejoin': 'round' }, g);
+      for (let yy = 1.2; yy < top - .5; yy += 1.4) S('path', { d: `M${xa} ${Y(yy)}Q${(xa + X(x1c)) / 2} ${Y(yy + .3)} ${X(x1c - .3 * sd.dir)} ${Y(yy)}`, fill: 'none', stroke: 'rgba(70,76,82,.35)', 'stroke-width': 1.4 }, g);
+      S('path', { d: `M${xa} ${Y(top)}H${X(x1c - .2 * sd.dir)}`, stroke: '#6FAE52', 'stroke-width': 5, 'stroke-linecap': 'round' }, g);
+      return;
+    }
+    if (b < -.02) {
+      const xe = sd.trench || 1.8, xl = -1.9, dep = b;
+      const P = [[xl - .5, 0], [xl, dep], [xe - .6, dep], [xe, 0]].map(([x, y]) => `${X(sd.toW(x)).toFixed(1)} ${Y(y).toFixed(1)}`);
+      S('path', { d: 'M' + P.join('L') + 'Z', fill: '#4E3820' }, g);
+      S('path', { d: `M${P[0]}L${P[1]}L${P[2]}L${P[3]}`, fill: 'none', stroke: '#3A2814', 'stroke-width': 2.5, 'stroke-linejoin': 'round' }, g);
+      S('rect', { x: Math.min(X(sd.toW(xl)), X(sd.toW(xe - .6))), y: Y(dep) - 1, width: Math.abs(X(sd.toW(xe - .6)) - X(sd.toW(xl))), height: 4, fill: '#6E5332' }, g);
+      return;
+    }
+    if (b < .02) return;
+    if (kind === 'stone' || b <= 1.6) {
+      const w = 2.4 + b * .4;
+      S('path', { d: `M${X(xw - w / 2)} ${Y(0)}Q${X(xw - w / 2 - .15)} ${Y(b * .75)} ${X(xw - w / 4)} ${Y(b)}H${X(xw + w / 4)}Q${X(xw + w / 2 + .1)} ${Y(b * .8)} ${X(xw + w / 2)} ${Y(0)}Z`, fill: `url(#${id}rock)`, stroke: '#5F676E', 'stroke-width': 2 }, g);
+      S('path', { d: `M${X(xw - w / 5)} ${Y(b * .7)}l${.3 * V.k} ${.25 * V.k}l${.25 * V.k} ${-.1 * V.k}`, fill: 'none', stroke: 'rgba(60,66,72,.45)', 'stroke-width': 1.5 }, g);
+      S('path', { d: `M${X(xw - w / 4)} ${Y(b) + 1}H${X(xw + w / 4)}`, stroke: '#78B35A', 'stroke-width': 4, 'stroke-linecap': 'round' }, g);
+      return;
+    }
+    if (b <= 4.2) {
+      const w = 3.2;
+      S('path', { d: `M${X(xw - w / 2 - .3)} ${Y(0)}L${X(xw - w / 2)} ${Y(b * .55)}Q${X(xw - w / 2 + .1)} ${Y(b * .95)} ${X(xw - w / 5)} ${Y(b)}H${X(xw + w / 4)}Q${X(xw + w / 2)} ${Y(b * .9)} ${X(xw + w / 2 + .1)} ${Y(b * .45)}L${X(xw + w / 2 + .45)} ${Y(0)}Z`, fill: `url(#${id}rock)`, stroke: '#5F676E', 'stroke-width': 2, 'stroke-linejoin': 'round' }, g);
+      S('path', { d: `M${X(xw - .8)} ${Y(b * .3)}l${.5 * V.k} ${-.4 * V.k}l${.4 * V.k} ${.2 * V.k}M${X(xw + .4)} ${Y(b * .7)}l${.3 * V.k} ${.3 * V.k}`, fill: 'none', stroke: 'rgba(60,66,72,.45)', 'stroke-width': 1.6 }, g);
+      S('path', { d: `M${X(xw - w / 5)} ${Y(b) + 1}H${X(xw + w / 4)}`, stroke: '#78B35A', 'stroke-width': 5, 'stroke-linecap': 'round' }, g);
+      return;
+    }
+    const w = 2.4, rows = Math.ceil(b / .8);
+    for (let i = 0; i < rows; i++) { const y0 = i * b / rows, hh = b / rows, off = i % 2 ? .3 : 0; for (let j = -1; j <= 1; j++) { const x0 = xw - w / 2 + (j + 1) * w / 3 - off * (j === -1 ? 0 : 1); const ww = j === -1 ? w / 3 - off : w / 3; S('rect', { x: X(x0) + 1, y: Y(y0 + hh) + 1, width: Math.max(2, ww * V.k - 2), height: hh * V.k - 2, rx: 5, fill: (i + j) % 2 ? '#A9AFB4' : '#979EA4', stroke: '#646B72', 'stroke-width': 1.2 }, g); } }
+    S('rect', { x: X(xw - w / 2 - .1), y: Y(b) - 3, width: (w + .2) * V.k, height: 6, rx: 3, fill: '#7B8289' }, g);
+  }
+  function drawSling(sd) {
+    const g = sd.gS; g.innerHTML = ''; const xw = sd.toW(0), top = sd.base < 0 ? sd.base : Math.max(0, sd.base), P = sd.pouch, fork = P - top;
+    const arm = Math.min(.42, fork * .5), stemTop = P - Math.min(.5, fork * .55);
+    S('path', { d: `M${X(xw)} ${Y(top)}V${Y(stemTop)}`, stroke: `url(#${id}wood)`, 'stroke-width': 10, 'stroke-linecap': 'round' }, g);
+    S('path', { d: `M${X(xw)} ${Y(stemTop)}Q${X(xw - arm * .9)} ${Y(stemTop + .1)} ${X(xw - arm)} ${Y(P + .32)}M${X(xw)} ${Y(stemTop)}Q${X(xw + arm * .9)} ${Y(stemTop + .1)} ${X(xw + arm)} ${Y(P + .32)}`, fill: 'none', stroke: '#7A4D22', 'stroke-width': 8, 'stroke-linecap': 'round' }, g);
+    S('path', { d: `M${X(xw) - 2} ${Y(top) - 4}V${Y(stemTop) + 6}`, stroke: 'rgba(255,220,170,.35)', 'stroke-width': 2, 'stroke-linecap': 'round' }, g);
+    sd.tips = [{ x: xw - arm, y: P + .32 }, { x: xw + arm, y: P + .32 }];
+  }
+  function bands(sd, bx, by) {
+    const back = sd.dir > 0 ? sd.tips[0] : sd.tips[1], front = sd.dir > 0 ? sd.tips[1] : sd.tips[0];
+    setA(sd.bandB, { x1: X(back.x), y1: Y(back.y), x2: X(bx), y2: Y(by) }); setA(sd.bandF, { x1: X(front.x), y1: Y(front.y), x2: X(bx), y2: Y(by) });
+    setA(sd.pouchE, { cx: X(bx) - 6 * sd.dir, cy: Y(by) + 2 });
+  }
+  function birdAt(sd, x, y, ang = 0) { sd.bird.setAttribute('transform', `translate(${X(x).toFixed(1)} ${Y(y).toFixed(1)}) scale(${(V.k * .4 / 14).toFixed(3)}) rotate(${ang.toFixed(1)}) scale(${sd.dir} 1)`); }
+  function restBird(sd) { const xw = sd.toW(0); birdAt(sd, xw, sd.pouch, 0); bands(sd, xw, sd.pouch); sd.bird.setAttribute('opacity', 1); }
+
+  /* Ziele und Hindernisse */
+  function drawBlocks() {
+    gBl.innerHTML = '';
+    blocks.forEach(b => {
+      if (b.al <= 0) return; const g = S('g', { opacity: b.al, transform: `translate(${X(b.x + b.w / 2 + b.dx).toFixed(1)} ${Y(b.y + b.h / 2 + b.dy).toFixed(1)}) rotate(${b.rot.toFixed(1)})` }, gBl), w = b.w * V.k, hh = b.h * V.k;
+      if (b.k === 'crate') {
+        S('rect', { x: -w / 2, y: -hh / 2, width: w, height: hh, rx: 2, fill: '#C9954E', stroke: '#7A5226', 'stroke-width': 2.5 }, g);
+        const n = Math.max(1, Math.round(b.h / 1.1)); for (let i = 0; i < n; i++) { const ya = -hh / 2 + i * hh / n, yb = ya + hh / n; S('path', { d: `M${-w / 2 + 3} ${ya + 3}L${w / 2 - 3} ${yb - 3}M${-w / 2} ${yb}H${w / 2}`, stroke: '#8A5E2C', 'stroke-width': 2.4 }, g); }
+        S('rect', { x: -w / 2 + 3, y: -hh / 2 + 3, width: w - 6, height: 3, fill: 'rgba(255,230,180,.35)' }, g);
+      } else if (b.k === 'wall' || b.k === 'tower') {
+        S('rect', { x: -w / 2, y: -hh / 2, width: w, height: hh, fill: b.k === 'tower' ? '#C8B79A' : '#9AA2AA', stroke: b.k === 'tower' ? '#7F6E52' : '#5D666F', 'stroke-width': 2 }, g);
+        const rh = .5 * V.k; for (let i = 0, yy = hh / 2; yy > -hh / 2 + 2; i++, yy -= rh) { S('line', { x1: -w / 2, x2: w / 2, y1: yy, y2: yy, stroke: b.k === 'tower' ? 'rgba(110,90,60,.45)' : 'rgba(70,78,86,.5)', 'stroke-width': 1.2 }, g); const xo = i % 2 ? -w / 6 : w / 6; S('line', { x1: xo, x2: xo, y1: yy, y2: Math.max(-hh / 2, yy - rh), stroke: b.k === 'tower' ? 'rgba(110,90,60,.45)' : 'rgba(70,78,86,.5)', 'stroke-width': 1.2 }, g); }
+      } else if (b.k === 'can') {
+        const cols = [['#D64545', '#9E2A2A'], ['#2F6FD6', '#1D4A99'], ['#E0A21A', '#A0720C']], cc = cols[b.ci % 3];
+        S('rect', { x: -w / 2, y: -hh / 2, width: w, height: hh, rx: 3, fill: cc[0], stroke: cc[1], 'stroke-width': 1.6 }, g);
+        S('rect', { x: -w / 2, y: -hh / 7, width: w, height: hh / 3.2, fill: '#F4F1E8' }, g);
+        S('ellipse', { cx: 0, cy: -hh / 2, rx: w / 2, ry: 2.6, fill: '#D9DDE1', stroke: '#8E959B', 'stroke-width': 1 }, g);
+        S('rect', { x: -w / 2 + 3, y: -hh / 2 + 3, width: 3.5, height: hh - 6, rx: 1.5, fill: 'rgba(255,255,255,.5)' }, g);
+      } else if (b.k === 'balloon') {
+        S('path', { d: `M0 ${hh / 2 - 5}q-7 14 3 ${.9 * V.k}`, fill: 'none', stroke: '#555', 'stroke-width': 1.4 }, g);
+        S('ellipse', { rx: w / 2, ry: hh / 2 - 4, fill: '#E5487A', stroke: '#9E2350', 'stroke-width': 2 }, g);
+        S('path', { d: `M-4 ${hh / 2 - 5}h8l-4 6z`, fill: '#9E2350' }, g);
+        S('ellipse', { cx: -w / 6, cy: -hh / 6, rx: w / 9, ry: hh / 7, fill: 'rgba(255,255,255,.55)' }, g);
+      }
+      if (b.tag && !b.hit && helps) S('text', { x: 0, y: (b.k === 'balloon' ? -hh / 2 - 6 : -hh / 2 - 8), 'text-anchor': 'middle', class: 'gtx b fwtag', text: b.tag }, g);
+    });
+  }
+  const isTarget = b => b.k === 'can' || b.k === 'balloon';
+  function knock(b, vx, by) {
+    if (b.hit) return; b.hit = true; b.by = by; b.vx = vx * .25 + 1.6 * Math.sign(vx || 1); b.vy = b.k === 'balloon' ? 0 : 4.2; b.spin = (Math.random() < .5 ? -1 : 1) * (300 + Math.random() * 300);
+    pop(b.x + b.w / 2, b.y + b.h + .4, b.k === 'balloon' ? 'Plopp' : 'Treffer', '#fff');
+    if (b.k === 'balloon') burst(b.x + b.w / 2, b.y + b.h / 2, ['#E5487A', '#F08AA8', '#fff'], 14, 5);
+    blocks.forEach(q => { if (q !== b && !q.hit && q.k === 'can' && Math.abs(q.y - (b.y + b.h)) < .06 && q.x < b.x + b.w && q.x + q.w > b.x) knock(q, vx * .6, by); });
+  }
+
+  /* Effekte */
+  function pop(x, y, t, col) { const e = S('text', { x: X(x), y: Y(y), 'text-anchor': 'middle', class: 'fwpop', style: `fill:${col}`, text: t }, gFx); fx.push({ el: e, kind: 'pop', x, y, vy: 1.6, life: 0, max: 1.1 }); }
+  function burst(x, y, cols, n, sp) { for (let i = 0; i < n; i++) { const a = Math.random() * Math.PI * 2, v = sp * (.4 + Math.random() * .8); const e = S('ellipse', { rx: 3 + Math.random() * 2, ry: 1.6, fill: cols[i % cols.length] }, gFx); fx.push({ el: e, kind: 'p', x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v + 2, g: 7, life: 0, max: .9 + Math.random() * .5, rot: Math.random() * 360, vr: (Math.random() - .5) * 720 }); } }
+  function dust(x, y) { for (let i = 0; i < 9; i++) { const e = S('circle', { r: 4, fill: '#C9B48E', opacity: .8 }, gFx); fx.push({ el: e, kind: 'd', x, y: y + .1, vx: (Math.random() - .5) * 3, vy: .4 + Math.random() * 1.2, g: 0, life: 0, max: .8 + Math.random() * .4, r0: 3 + Math.random() * 4 }); } }
+  function feathers(x, y, kind) { burst(x, y, kind === 'blau' ? ['#5E9CDB', '#F3C432', '#fff'] : ['#F3C432', '#7E9A55', '#fff'], 7, 3); }
+
+  /* Laden */
+  function setView(x0, x1, y0, y1) { const k = W / (x1 - x0); V = { x0, x1, y0, y1, k, H: Math.round((y1 - y0) * k) }; sv.setAttribute('viewBox', `0 0 ${W} ${V.H}`); }
+  function mkSide(i, cfg) {
+    const sd = Object.assign({ i, dir: 1, ox: 0, base: 0, baseT: 0, pouch: 1, platK: 'auto', bird: null, kind: 'kohl', trench: 0 }, cfg);
+    sd.toW = x => sd.ox + sd.dir * x; sd.toL = xw => (xw - sd.ox) * sd.dir;
+    sd.gP = S('g', {}, gTer); sd.gS = S('g', {}, gSlB);
+    sd.bandB = S('line', { stroke: '#3A2418', 'stroke-width': 4, 'stroke-linecap': 'round' }, gSlB);
+    sd.bird = fwBird(gBird, sd.kind, id + 'shine');
+    sd.bandF = S('line', { stroke: '#3A2418', 'stroke-width': 4.5, 'stroke-linecap': 'round' }, gSlF);
+    sd.pouchE = S('ellipse', { rx: 6, ry: 4, fill: '#4A2E1C' }, gSlF);
+    return sd;
+  }
+  function clearSides() { [gTer, gSlB, gBird, gSlF].forEach(g => g.innerHTML = ''); sides = []; }
+  function setBlocks(list) { blocks = list.map((b, i) => Object.assign({ hit: false, vx: 0, vy: 0, rot: 0, dx: 0, dy: 0, al: 1, ci: b.owner != null ? b.owner : i }, JSON.parse(JSON.stringify(b)))); drawBlocks(); }
+
+  /* Start und Untergrund aus der Gleichung */
+  function startInfo(sd, cf) {
+    const f0 = cf.f(0);
+    if (!isFinite(cf.A) || Math.abs(cf.A) < 1e-9) return { err: `Mit ${M('a')} = 0 ist es keine Parabel mehr, sondern eine Gerade. Eine geworfene Meise fliegt aber immer einen Bogen.` };
+    if (cf.A > 0) return { err: `Mit ${M('a')} &gt; 0 ist die Parabel nach oben offen. Ein Wurf kommt aber immer wieder herunter, also muss ${M('a')} negativ sein.` };
+    if (sd.platK === 'fixedC') { if (Math.abs(f0 - sd.pouchFix) > 1e-6) return { err: `Bei ${M('x')} = 0 ist ${M('f')}(0) = ${M('c')} = ${fmt(f0, 3)}. Die Meise sitzt aber ${fmt(sd.pouchFix, 2)} m hoch in der Schleuder. Das ${M('c')} muss die Starthöhe sein.`, f0, mism: true }; return { f0, base: sd.baseFix }; }
+    if (sd.platK === 'cliff') return { f0, base: sd.baseFix };
+    if (sd.platK === 'lift') { if (f0 < .3) return { err: `Start bei ${M('f')}(0) = ${fmt(f0, 2)}: ${f0 < 0 ? 'unter der Erde' : 'zu knapp über dem Boden'}. Rück den Scheitel näher an die Schleuder, leg ihn höher oder bring ${M('a')} näher an null.`, f0 }; if (f0 > 13) return { err: `Start bei ${M('f')}(0) = ${fmt(f0, 2)} m. So hoch reicht die Hebebühne nicht, höchstens 13 m.`, f0 }; return { f0, base: Math.max(0, f0 - 1) }; }
+    /* auto: Stein, Felsen, Turm oder Graben */
+    if (f0 > 13) return { err: `${M('c')} = ${fmt(f0, 2)}: So hoch geht es hier nicht hinauf, höchstens 13 m.`, f0 };
+    if (f0 < -3.5) return { err: `${M('c')} = ${fmt(f0, 2)}: So tief ist kein Graben, höchstens 3,5 m unter dem Boden.`, f0 };
+    if (cf.ys <= .5) return { err: `Mit ${M('c')} = ${fmt(f0, 2)} kommt die Bahn nie über den Boden: Ihr höchster Punkt läge bei ${fmt(cf.ys, 2)} m.`, f0 };
+    const base = f0 - 1; let trench = 0;
+    if (base < 0) { const D = cf.B * cf.B - 4 * cf.A * cf.C, r = [(-cf.B + Math.sqrt(D)) / (2 * cf.A), (-cf.B - Math.sqrt(D)) / (2 * cf.A)].filter(x => x > 0).sort((p, q) => p - q); trench = Math.max(1.8, (r[0] || 1.8) + 1.3); }
+    return { f0, base, trench };
+  }
+  function applyStart(sd, info) { if (info.base == null) return; sd.baseT = info.base; sd.pouchT = info.f0; if (info.trench != null) sd.trench = info.trench; }
+
+  /* Kurve, Scheitel, Startpunkt */
+  function drawCurve(sd, cf, mode) {
+    gCurve.innerHTML = ''; gAnn.innerHTML = ''; if (!cf) return;
+    const span = sd.reach + 2, n = 180; let d = '', pen = false;
+    for (let i = 0; i <= n; i++) { const x = -1 + (span + 1) * i / n, y = cf.f(x); if (y < V.y0 - 1 || y > V.y1 + 3) { pen = false; continue; } d += (pen ? 'L' : 'M') + X(sd.toW(x)).toFixed(1) + ' ' + Y(y).toFixed(1); pen = true; }
+    S('path', { d, fill: 'none', stroke: mode === 'pre' ? (sd.col || 'rgba(15,30,46,.6)') : 'rgba(15,30,46,.4)', 'stroke-width': mode === 'pre' ? 2.6 : 2, 'stroke-dasharray': '8 7', opacity: mode === 'pre' ? .85 : 1 }, gCurve);
+    if (!helps) return;
+    const lab = (x, y, t, col, anc, dy) => S('text', { x: X(sd.toW(x)), y: Y(y) + dy, 'text-anchor': anc, class: 'gtx b', style: `fill:${col}`, text: t }, gAnn);
+    const f0 = cf.f(0);
+    if (f0 > V.y0 && f0 < V.y1) { S('circle', { cx: X(sd.toW(0)), cy: Y(f0), r: 6.5, fill: '#AB2B69', stroke: '#fff', 'stroke-width': 2 }, gAnn); lab(.55, f0, `f(0) = ${fmt(f0, 2)}`, '#AB2B69', sd.dir > 0 ? 'start' : 'end', 22); }
+    if (cf.A < 0 && cf.xs > .4 && cf.xs < sd.reach && cf.ys < V.y1) { S('line', { x1: X(sd.toW(cf.xs)), x2: X(sd.toW(cf.xs)), y1: Y(cf.ys), y2: Y(0), stroke: '#12829A', 'stroke-width': 1.5, 'stroke-dasharray': '4 6' }, gAnn); S('circle', { cx: X(sd.toW(cf.xs)), cy: Y(cf.ys), r: 6.5, fill: '#12829A', stroke: '#fff', 'stroke-width': 2 }, gAnn); lab(cf.xs, cf.ys, `S(${fmt(cf.xs, 2)} | ${fmt(cf.ys, 2)})`, '#12829A', 'middle', -13); }
+  }
+
+  /* Flug */
+  function groundAt(sd, xl) { return (sd.base < 0 && xl < sd.trench - .15 && xl > -2) ? sd.base : 0; }
+  function fire(sd, cf) {
+    if (state === 'pull' || state === 'fly' || state === 'fall') return false;
+    const info = startInfo(sd, cf); if (info.err) return info;
+    applyStart(sd, info); sd.base = sd.baseT; sd.pouch = sd.pouchT; drawPlat(sd); drawSling(sd);
+    gTr.innerHTML = ''; banner.hidden = true; if (!preview) { gCurve.innerHTML = ''; gAnn.innerHTML = ''; }
+    const vx = Math.sqrt(9.81 / (2 * Math.abs(cf.A)));
+    let land = sd.reach + 4; for (let x = .1; x < sd.reach + 4; x += .05) if (cf.f(x) < groundAt(sd, x)) { land = x; break; }
+    const T = land / vx, Dd = clamp(T, 1.1, 2.6);
+    const sl = cf.d(0), L = Math.hypot(1, sl);
+    fl = { sd, cf, vx, sp: T / Dd, x: 0, t: 0, pull: { x: -1.15 / L, y: -1.15 * sl / L }, trail: [], lastDot: -9, hitMsg: '', hits: [] };
+    state = 'pull'; return { ok: true, f0: info.f0 };
+  }
+  function finish(stopX, how) {
+    const sd = fl.sd, cf = fl.cf; state = 'done'; shots++;
+    const res = { cf, stopX, how: how || fl.how, hits: fl.hits, side: sd.i, solid: fl.solid };
+    lastShot = res;
+    if (helps || preview) drawCurve(sd, cf, 'post');
+    const tg = blocks.filter(isTarget), left = tg.filter(b => !b.hit);
+    res.targets = tg; res.left = left;
+    o.onShot && o.onShot(res, api);
+    if (o.duel) { setTimeout(() => { state = 'idle'; restBird(sd); }, 900); return; }
+    if (tg.length && !left.length) {
+      const st = shots <= 1 ? 3 : shots <= 3 ? 2 : 1; res.stars = st;
+      setTimeout(() => { banner.hidden = false; banner.innerHTML = `<b>Geschafft.</b> ${shots} ${shots === 1 ? 'Schuss' : 'Schüsse'} <span class="fwstars">${'★'.repeat(st)}<i>${'★'.repeat(3 - st)}</i></span>`; }, 350);
+      state = 'won'; o.onWin && o.onWin(lv, st, shots, api);
+      setTimeout(() => restBird(sd), 900); return;
+    }
+    setTimeout(() => { if (state === 'done') { state = 'idle'; restBird(sd); } }, 900);
+  }
+  function step(dt) {
+    const f = fl, sd = f.sd;
+    if (state === 'pull') {
+      f.t += dt; const u = Math.min(1, f.t / .32), e = ease(u), px = f.pull.x * e, py = sd.pouch + f.pull.y * e;
+      birdAt(sd, sd.toW(px), py, 0); bands(sd, sd.toW(px), py);
+      if (u >= 1) { state = 'fly'; f.t = 0; bands(sd, sd.toW(0), sd.pouch); }
+      return;
+    }
+    if (state === 'fly') {
+      const n = 6; for (let i = 0; i < n; i++) {
+        f.x += f.vx * f.sp * dt / n; const x = f.x, y = f.cf.f(x), xw = sd.toW(x);
+        if (x - f.lastDot > .55) { f.lastDot = x; S('circle', { cx: X(xw), cy: Y(y), r: 3.2, fill: '#fff', stroke: 'rgba(30,40,50,.25)', 'stroke-width': 1 }, gTr); }
+        for (const b of blocks) {
+          if (b.hit && isTarget(b)) continue; if (b.al <= 0) continue;
+          const cx = clamp(xw, b.x, b.x + b.w), cy = clamp(y, b.y, b.y + b.h); if (Math.hypot(xw - cx, y - cy) >= .42) continue;
+          if (isTarget(b)) { knock(b, f.vx * sd.dir, sd.i); f.hits.push(b); }
+          else { f.solid = b; f.how = b.k === 'crate' ? 'Kiste' : b.k === 'tower' ? 'Turm' : 'Mauer'; f.stopAt = x; feathers(xw, y, sd.kind); dust(xw, y); f.fall = { x: xw, y, vx: -1.2 * sd.dir, vy: 0, rot: 0 }; state = 'fall'; return; }
+        }
+        const gnd = groundAt(sd, x);
+        if (y <= gnd + .4 && x > .3) { f.how = 'Boden'; dust(xw, gnd); birdAt(sd, xw, gnd + .4, 0); f.stopAt = x; f.roll = { x: xw, v: 1.6 * sd.dir, t: 0, y: gnd + .4 }; state = 'roll'; return; }
+        if (x > sd.reach + 4 || y < V.y0) { f.how = 'weg'; f.stopAt = x; finish(x, 'weg'); return; }
+        const ang = -Math.atan(f.cf.d(x)) * 180 / Math.PI * sd.dir; birdAt(sd, xw, y, ang);
+      }
+      return;
+    }
+    if (state === 'fall') { const q = f.fall; q.vy -= 9.81 * dt; q.x += q.vx * dt; q.y += q.vy * dt; q.rot += 300 * dt; const gnd = groundAt(sd, sd.toL(q.x)); if (q.y <= gnd + .4) { q.y = gnd + .4; birdAt(sd, q.x, q.y, 0); finish(f.stopAt, f.how); return; } birdAt(sd, q.x, q.y, q.rot); return; }
+    if (state === 'roll') { const r = f.roll; r.t += dt; r.x += r.v * dt; r.v *= Math.pow(.05, dt); birdAt(sd, r.x, r.y, r.t * 220 * sd.dir); if (r.t > .55) finish(f.stopAt, 'Boden'); }
+  }
+  s.tick((dt, t) => {
+    if (!V || !sv.isConnected) return;
+    clouds.forEach(c => { c.x += c.v * dt; if (c.x > W + 120) c.x = -160; c.g.setAttribute('transform', `translate(${c.x.toFixed(1)} ${c.y.toFixed(1)})`); });
+    sides.forEach(sd => {
+      if (sd.baseT == null || state === 'fly' || state === 'pull' || state === 'fall' || state === 'roll') return;
+      if (Math.abs(sd.base - sd.baseT) > .005 || Math.abs(sd.pouch - sd.pouchT) > .005) { const r = 1 - Math.pow(.0005, dt); sd.base += (sd.baseT - sd.base) * r; sd.pouch += (sd.pouchT - sd.pouch) * r; drawPlat(sd); drawSling(sd); restBird(sd); }
+    });
+    let mv = false; blocks.forEach(b => { if (!b.hit || b.al <= 0) return; mv = true; if (b.k === 'balloon') { b.al -= dt * 3.2; b.w *= 1 + dt * 2; } else { b.vy -= 9.81 * dt; b.dx += b.vx * dt; b.dy += b.vy * dt; b.rot += b.spin * dt; if (b.y + b.dy < -1.5) b.al -= dt * 2.5; } }); if (mv) drawBlocks();
+    for (let i = fx.length - 1; i >= 0; i--) { const p = fx[i]; p.life += dt; const u = p.life / p.max; if (u >= 1) { p.el.remove(); fx.splice(i, 1); continue; }
+      if (p.kind === 'pop') { p.y += p.vy * dt; setA(p.el, { y: Y(p.y), opacity: 1 - u * u }); }
+      else if (p.kind === 'd') { p.x += p.vx * dt; p.y += p.vy * dt; setA(p.el, { cx: X(p.x), cy: Y(p.y), r: p.r0 * (1 + u * 2), opacity: .7 * (1 - u) }); }
+      else { p.vy -= p.g * dt; p.vx *= .98; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; setA(p.el, { transform: `translate(${X(p.x).toFixed(1)} ${Y(p.y).toFixed(1)}) rotate(${p.rot.toFixed(0)})`, opacity: 1 - u }); } }
+    if (fl && (state === 'pull' || state === 'fly' || state === 'fall' || state === 'roll')) step(dt);
+  });
+
+  const api = {
+    el: null, svg: sv, banner,
+    get state() { return state; }, get shots() { return shots; }, side: i => sides[i], get act() { return act; },
+    load(level, opt = {}) {
+      lv = level; shots = 0; state = 'idle'; fl = null; fx.forEach(p => p.el.remove()); fx = []; banner.hidden = true; gTr.innerHTML = ''; gCurve.innerHTML = ''; gAnn.innerHTML = '';
+      if (level.duel) {
+        const D = level.D; setView(-6.6, D + 6.6, -2.4, level.y1 || 16); clearSides(); drawBg();
+        sides = [mkSide(0, { dir: 1, ox: 0, platK: 'lift', kind: 'kohl', col: level.cols[0], reach: D + 5 }), mkSide(1, { dir: -1, ox: D, platK: 'lift', kind: 'blau', col: level.cols[1], reach: D + 5 })];
+        sides.forEach(sd => { sd.base = sd.baseT = 1.5; sd.pouch = sd.pouchT = 2.5; drawPlat(sd); drawSling(sd); restBird(sd); });
+        setBlocks(level.blocks); act = 0; drawGrid(); return;
+      }
+      setView(-4.2, level.x1 || 26, -2.4, level.y1 || 13); clearSides(); drawBg();
+      const p = level.plat, sd = mkSide(0, { reach: (level.x1 || 26) - 1 });
+      if (p === 'lift') sd.platK = 'lift'; else if (p === 'auto') sd.platK = 'auto';
+      else if (p.k === 'cliff') { sd.platK = 'cliff'; sd.baseFix = p.h; }
+      else { sd.platK = 'fixedC'; sd.baseFix = p.h; sd.pouchFix = p.h + 1; }
+      sides = [sd]; act = 0;
+      const cf0 = fwCoef(level.form, level.fx || {}, opt.p || level.init), inf = startInfo(sd, cf0);
+      if (sd.platK === 'fixedC' || sd.platK === 'cliff') { sd.base = sd.baseT = sd.baseFix; sd.pouch = sd.pouchT = sd.baseFix + 1; }
+      else if (inf.base != null) { sd.base = sd.baseT = inf.base; sd.pouch = sd.pouchT = inf.f0; sd.trench = inf.trench || 0; }
+      else { sd.base = sd.baseT = 0; sd.pouch = sd.pouchT = 1; }
+      drawPlat(sd); drawSling(sd); restBird(sd); setBlocks(level.blocks); drawGrid();
+      if (preview) drawCurve(sd, cf0, 'pre');
+    },
+    /* Eingabe geändert: Untergrund nachführen, Vorschau zeigen */
+    edit(cf, sideI = act) {
+      const sd = sides[sideI]; if (!sd || state === 'fly' || state === 'pull' || state === 'fall' || state === 'roll') return null;
+      const info = startInfo(sd, cf); applyStart(sd, info);
+      if (preview && !info.err) drawCurve(sd, cf, 'pre'); else if (!lastShot || !helps) { gCurve.innerHTML = ''; gAnn.innerHTML = ''; }
+      if (info.err && preview) { gCurve.innerHTML = ''; gAnn.innerHTML = ''; }
+      return info;
+    },
+    fire(cf, sideI = act) { if (state === 'won') { api.reset(); } return fire(sides[sideI], cf); },
+    setAct(i) { act = i; drawGrid(); const sd = sides[i]; restBird(sd); gCurve.innerHTML = ''; gAnn.innerHTML = ''; },
+    setHelps(v) { helps = v; drawGrid(); drawBlocks(); if (!v) { gAnn.innerHTML = ''; if (!preview) gCurve.innerHTML = ''; } },
+    setPreview(v) { preview = v; if (!v) { gCurve.innerHTML = ''; gAnn.innerHTML = ''; } },
+    reset() { setBlocks(lv.blocks); shots = 0; state = 'idle'; gTr.innerHTML = ''; banner.hidden = true; lastShot = null; gCurve.innerHTML = ''; gAnn.innerHTML = ''; sides.forEach(restBird); },
+    blocks: () => blocks, keepTrail(col) { gTr.querySelectorAll('circle').forEach(c => { c.setAttribute('fill', col); c.setAttribute('opacity', .55); c.setAttribute('r', 2.4); }); },
+    clearTrail() { gTr.innerHTML = ''; }, curve: (cf, i) => drawCurve(sides[i == null ? act : i], cf, 'pre')
+  };
+  api.el = h('div', { class: 'fwrel' }, sv, banner);
+  return api;
+}
+
+/* ---------- Rückmeldung nach dem Schuss ---------- */
+function fwFeedback(res, toL = x => x) {
+  const cf = res.cf, left = res.left || [];
+  if (res.targets.length && !left.length) return `<b>Volltreffer.</b> ${res.hits.length > 1 ? 'Alle Ziele mit einer Bahn.' : ''}`;
+  let msg = res.hits.length ? `<b>${res.hits.length === 1 ? 'Ein Treffer.' : res.hits.length + ' Treffer.'}</b> ` : '';
+  if (res.solid) { const b = res.solid, xm = res.stopX, top = b.y + b.h; msg += `Gegen ${res.how === 'Kiste' ? 'die Kiste' : res.how === 'Turm' ? 'den Turm' : 'die Mauer'} bei ${M('x')} ≈ ${fmt(xm, 1)}. Die Bahn ist dort ${fmt(cf.f(xm), 1)} m hoch`; msg += b.y > .1 ? `, das Hindernis beginnt bei ${fmt(b.y, 1)} m.` : `, das Hindernis ist ${fmt(top, 1)} m hoch.`; return msg; }
+  const t = left[0]; if (!t) return msg;
+  const xc = toL(t.x + t.w / 2), yv = cf.f(xc), lo = t.y, hi = t.y + t.h, nm = t.k === 'balloon' ? 'dem Ballon' : 'der Dose';
+  if (res.how === 'Boden' && res.stopX < xc - .5) msg += `Gelandet bei ${M('x')} ≈ ${fmt(res.stopX, 1)}, also ${fmt(xc - res.stopX, 1)} m zu kurz.`;
+  else if (yv > hi) msg += `Bei ${nm} (${M('x')} = ${fmt(xc, 1)}) ist die Bahn auf Höhe ${M('f')}(${fmt(xc, 1)}) = ${fmt(yv, 1)}, also ${fmt(yv - hi, 1)} m zu hoch.`;
+  else if (yv < lo) msg += `Bei ${nm} (${M('x')} = ${fmt(xc, 1)}) ist die Bahn auf Höhe ${fmt(yv, 1)}, also ${fmt(lo - yv, 1)} m zu tief.`;
+  else msg += 'Knapp daneben.';
+  return msg;
+}
+
+/* ---------- Mission: Level mit Eingabe, Knopf und Rückmeldung ---------- */
+function fwPlay(s, o) {
+  o = Object.assign({ ids: ['c1'], need: null, preview: false, campaign: false }, o);
+  let li = 0, lv = FWL[o.ids[0]]; const won = new Set();
+  const ar = fwArena(s, { preview: o.preview, helps: true, onShot: (res) => { say.classList.remove('err'); say.innerHTML = fwFeedback(res); updHead(); }, onWin: (L, st) => { won.add(L.id); if (o.campaign) { const best = FWS[L.id] || 0; if (st > best) { FWS[L.id] = st; LS.set('om5q-fw', FWS); } } drawTabs(); nextB.hidden = li >= o.ids.length - 1; o.onWin && o.onWin(L, st, won); if (o.need && won.size >= o.need) s.done && s.done(o.doneMsg || '<b>Geschafft.</b>'); } });
+  const head = h('div', { class: 'fwhead' }), q = h('p', { class: 'fwq' }), tabs = h('div', { class: 'fwtabs' }), say = h('div', { class: 'fwsay', 'aria-live': 'polite' }), stat = h('div', { class: 'fwstat' });
+  const inBox = h('div', { class: 'fwinbox' });
+  let inp = null, cf = null;
+  const fireB = h('button', { class: 'btn primary fwgo', type: 'button', html: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M4 18C8 6 16 4 20 8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M15 6l5 2-1 5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Abschießen' });
+  const nextB = h('button', { class: 'btn', type: 'button', hidden: true }, 'Nächstes Level');
+  const prevB = h('label', { class: 'fwsw' }, h('input', { type: 'checkbox' }), h('span', {}, 'Bahn vorher zeigen'));
+  const helpB = h('label', { class: 'fwsw' }, h('input', { type: 'checkbox', checked: true }), h('span', {}, 'Achsen und Beschriftung'));
+  const solB = !STU ? h('button', { class: 'linkbtn fwsol', type: 'button' }, 'Lösung einsetzen') : null;
+  const info = h('div', { class: 'fwinfo' });
+  const doFire = () => { if (!cf) return; const r = ar.fire(cf); if (r && r.err) { say.innerHTML = r.err; say.classList.add('err'); } else if (r) { say.classList.remove('err'); say.innerHTML = 'Die Meise fliegt …'; } };
+  fireB.onclick = doFire;
+  const onCh = vals => { cf = fwCoef(lv.form, lv.fx || {}, vals); const r = ar.edit(cf); showInfo(vals, r); };
+  function showInfo(vals, r) {
+    const f0 = cf.f(0);
+    info.innerHTML = `<span>${fwEqHtml(lv.form, lv.fx || {}, vals)}</span><span class="fwk">Start ${M('f')}(0) = ${fmt(f0, 2)}</span>` + (cf.A < 0 ? `<span class="fwk">Scheitel S(${fmt(cf.xs, 2)} | ${fmt(cf.ys, 2)})</span>` : '');
+    if (r && r.err) { say.innerHTML = r.err; say.classList.add('err'); } else if (say.classList.contains('err')) { say.classList.remove('err'); say.innerHTML = ''; }
+  }
+  prevB.querySelector('input').onchange = e => { ar.setPreview(e.target.checked); if (cf) ar.edit(cf); };
+  helpB.querySelector('input').onchange = e => ar.setHelps(e.target.checked);
+  if (solB) solB.onclick = () => { inp.set(lv.sol); onCh(inp.get()); };
+  nextB.onclick = () => load(li + 1);
+  function updHead() { stat.innerHTML = `Schüsse <b>${ar.shots}</b>`; }
+  function drawTabs() {
+    tabs.innerHTML = ''; if (o.ids.length < 2) return;
+    o.ids.forEach((k, i) => { const L = FWL[k], st = o.campaign ? (FWS[k] || 0) : (won.has(k) ? 3 : 0); const b = h('button', { type: 'button', class: 'fwtab' + (i === li ? ' cur' : '') + (won.has(k) || (o.campaign && FWS[k]) ? ' won' : '') }, h('span', { class: 'n' }, String(i + 1)), h('span', { class: 't' }, L.n), o.campaign ? h('small', {}, st ? '★'.repeat(st) : '') : null); b.onclick = () => load(i); tabs.append(b); });
+  }
+  function load(i) {
+    li = clamp(i, 0, o.ids.length - 1); lv = FWL[o.ids[li]];
+    ar.load(lv); inBox.innerHTML = ''; inp = fwInput(lv.form, lv.fx || {}, lv.init, onCh, doFire); inBox.append(inp.el);
+    cf = fwCoef(lv.form, lv.fx || {}, inp.get()); showInfo(inp.get(), null);
+    q.innerHTML = lv.q; say.innerHTML = ''; say.classList.remove('err'); nextB.hidden = true; updHead(); drawTabs();
+    head.innerHTML = ''; head.append(h('div', { class: 'fwlv' }, h('small', {}, o.ids.length > 1 ? `Level ${li + 1} von ${o.ids.length}` : 'Level'), h('b', {}, lv.n)), stat);
+  }
+  load(0);
+  const el = h('div', { class: 'stage fwst' }, tabs, head, q, ar.el, h('div', { class: 'fwctl' }, inBox, h('div', { class: 'fwbtns' }, fireB, nextB)), info, say, h('div', { class: 'fwopts' }, prevB, helpB, sp(), solB));
+  return { el, ar, load };
+}
+
+/* ---------- Duell zu zweit ---------- */
+function fwDuel(s) {
+  const COLS = ['#C2410C', '#2563B8'];
+  let names = ['Kohlmeisen', 'Blaumeisen'], ar = null, lvD = null, turn = 0, cans = [3, 3], shotsP = [0, 0], over = false, vals = [{ a: -.05, xs: 12, ys: 10 }, { a: -.05, xs: 12, ys: 10 }], hist = [[], []], easy = true;
+  const wrap = h('div', { class: 'fwduel' });
+  const score = h('div', { class: 'fwscore' }), inBox = h('div', { class: 'fwinbox' }), say = h('div', { class: 'fwsay', 'aria-live': 'polite' }), info = h('div', { class: 'fwinfo' }), histBox = h('div', { class: 'fwhist' });
+  const fireB = h('button', { class: 'btn primary fwgo', type: 'button' }, 'Abschießen');
+  const newB = btn('Neues Feld', () => setup());
+  const modeSeg = seg([[true, 'Mit Bahnvorschau'], [false, 'Profi: ohne']], easy, v => { easy = v; ar.setPreview(v); if (inp) { const cf = fwCoef('v', {}, inp.get()); ar.edit(cf); } }, 'Schwierigkeit');
+  let inp = null;
+  const nameIn = i => { const e = h('input', { class: 'fwname', value: names[i], maxlength: 18, 'aria-label': 'Name Team ' + (i + 1) }); e.oninput = () => { names[i] = e.value.trim() || (i ? 'Blaumeisen' : 'Kohlmeisen'); drawScore(); }; return e; };
+  const nameRow = h('div', { class: 'fwnames' }, h('span', { class: 'dot', style: `background:${COLS[0]}` }), nameIn(0), h('span', { class: 'vs' }, 'gegen'), h('span', { class: 'dot', style: `background:${COLS[1]}` }), nameIn(1));
+  function drawScore() {
+    score.innerHTML = '';
+    [0, 1].forEach(i => score.append(h('div', { class: 'fwp' + (turn === i && !over ? ' on' : ''), style: `--pc:${COLS[i]}` }, h('b', {}, names[i]), h('span', { class: 'cans' }, ...[0, 1, 2].map(k => h('i', { class: k < cans[i] ? '' : 'gone' }))), h('small', {}, `${shotsP[i]} ${shotsP[i] === 1 ? 'Schuss' : 'Schüsse'}`))));
+  }
+  function field() {
+    const D = [26, 28, 30, 32][Math.floor(Math.random() * 4)], hw = 5 + Math.round(Math.random() * 8) / 2, hc = [0, .8, 1.6, 2.4][Math.floor(Math.random() * 4)];
+    const bl = [{ x: D / 2 - .55, y: 0, w: 1.1, h: hw, k: 'wall' }];
+    const castle = (xc, owner) => { if (hc > 0) bl.push({ x: xc - 1.1, y: 0, w: 2.2, h: hc, k: 'crate' }); [[-.45, 0], [.45, 0], [0, 1.05]].forEach(([dx, dy]) => bl.push({ x: xc + dx - .4, y: hc + dy, w: .8, h: 1.05, k: 'can', owner })); };
+    castle(-3.6, 0); castle(D + 3.6, 1);
+    return { duel: true, D, hw, hc, blocks: bl, cols: COLS, y1: 16 };
+  }
+  function setup() {
+    lvD = field(); over = false; turn = 0; cans = [3, 3]; shotsP = [0, 0]; hist = [[], []];
+    if (!ar) { ar = fwArena(s, { duel: true, preview: easy, helps: true, onShot }); }
+    ar.load(lvD); ar.setPreview(easy); drawScore(); setTurn(0, true);
+    say.innerHTML = `Neues Feld: Die Mauer ist ${fmt(lvD.hw, 1)} m hoch, die Schleudern stehen ${lvD.D} m auseinander. Jedes Team rechnet von der eigenen Schleuder aus. Die Dosen des anderen Teams stehen also bei etwa ${M('x')} = ${fmt(lvD.D + 3.6, 1)}${lvD.hc ? `, auf einer ${fmt(lvD.hc, 1)} m hohen Kiste` : ''}.`;
+    drawHist();
+  }
+  function setTurn(i, first) {
+    turn = i; ar.setAct(i); inBox.innerHTML = ''; inp = fwInput('v', {}, vals[i], onCh, doFire, COLS[i]); inBox.append(inp.el); inBox.style.setProperty('--acc', COLS[i]);
+    wrap.style.setProperty('--pc', COLS[i]); fireB.textContent = `${names[i]}: Abschießen`; fireB.disabled = false; drawScore(); onCh(inp.get());
+    if (!first) say.innerHTML = `<b>${names[i]} sind dran.</b> Ihr Koordinatensystem beginnt bei ihrer eigenen Schleuder.`;
+    inp.focus();
+  }
+  function onCh(v) { vals[turn] = Object.assign({}, v); const cf = fwCoef('v', {}, v); const r = ar.edit(cf, turn); info.innerHTML = `<span>${fwEqHtml('v', {}, v)}</span><span class="fwk">Start ${M('f')}(0) = ${fmt(cf.f(0), 2)}</span>`; if (r && r.err) { say.innerHTML = r.err; say.classList.add('err'); } else if (say.classList.contains('err')) { say.classList.remove('err'); say.innerHTML = ''; } }
+  function doFire() { if (over) return; const cf = fwCoef('v', {}, inp.get()); const r = ar.fire(cf, turn); if (r && r.err) { say.innerHTML = r.err; say.classList.add('err'); return; } if (r) { fireB.disabled = true; inp.disable(true); say.classList.remove('err'); say.innerHTML = `${names[turn]} schießen …`; } }
+  fireB.onclick = doFire;
+  function onShot(res) {
+    const me = res.side, opp = 1 - me; shotsP[me]++;
+    const bl = ar.blocks(); cans = [0, 1].map(i => bl.filter(b => b.k === 'can' && b.owner === i && !b.hit).length);
+    const hitsOpp = res.hits.filter(b => b.owner === opp).length, own = res.hits.filter(b => b.owner === me).length;
+    hist[me].unshift({ eq: fwEqHtml('v', {}, vals[me]), r: hitsOpp ? `${hitsOpp} ${hitsOpp === 1 ? 'Dose' : 'Dosen'}` : own ? 'Eigentor' : res.solid ? res.how : res.how === 'weg' ? 'drüber' : 'daneben' }); hist[me] = hist[me].slice(0, 4);
+    drawHist(); drawScore(); ar.keepTrail(COLS[me]);
+    if (cans[opp] === 0) { over = true; drawScore(); ar.banner.hidden = false; ar.banner.innerHTML = `<b>${names[me]} gewinnen</b> mit ${shotsP[me]} ${shotsP[me] === 1 ? 'Schuss' : 'Schüssen'}.`; say.innerHTML = `<b>${names[me]} haben alle Dosen getroffen.</b> „Neues Feld“ startet eine Revanche.`; inp.disable(true); fireB.disabled = true; return; }
+    if (cans[me] === 0) { over = true; drawScore(); ar.banner.hidden = false; ar.banner.innerHTML = `<b>${names[opp]} gewinnen</b>, ein Eigentor zu viel.`; inp.disable(true); fireB.disabled = true; return; }
+    const sd = ar.side(me), rest = bl.filter(b => b.k === 'can' && b.owner === opp && !b.hit).sort((p, q) => q.y - p.y);
+    say.innerHTML = (hitsOpp ? `<b>${hitsOpp === 1 ? 'Eine Dose' : hitsOpp + ' Dosen'} getroffen.</b> ` : '') + (own && !hitsOpp ? '<b>Autsch, die eigene Dose.</b> ' : '') + fwFeedback(Object.assign({}, res, { targets: [1], left: rest, hits: [] }), sd.toL);
+    setTimeout(() => { if (!over) { ar.banner.hidden = false; ar.banner.innerHTML = `<b>${names[opp]}</b> sind dran`; setTimeout(() => { ar.banner.hidden = true; }, 1200); setTurn(opp); } }, 1100);
+  }
+  function drawHist() {
+    histBox.innerHTML = '';
+    [0, 1].forEach(i => histBox.append(h('div', { class: 'fwhc', style: `--pc:${COLS[i]}` }, h('b', {}, names[i]), hist[i].length ? h('ol', {}, hist[i].map(q => h('li', {}, h('span', { html: q.eq }), h('em', {}, q.r)))) : h('p', {}, 'Noch kein Schuss.'))));
+  }
+  setup();
+  wrap.append(h('div', { class: 'stage fwst duel' }, h('div', { class: 'fwdtop' }, nameRow, h('div', { class: 'sp' }), modeSeg, newB), score, ar.el, h('div', { class: 'fwctl' }, inBox, h('div', { class: 'fwbtns' }, fireB)), info, say), histBox,
+    h('details', { class: 'fwrules' }, h('summary', {}, 'Spielregeln'), h('div', { html: `<p>Zwei Teams spielen abwechselnd an einem Gerät. Wer dran ist, tippt eine Parabel in Scheitelform ein, ${M('f')}(${M('x')}) = ${M('a')} · (${M('x')} − ${M('x')}<sub>S</sub>)² + ${M('y')}<sub>S</sub>, und schießt. Jedes Team misst von der eigenen Schleuder aus, die ${M('x')}-Achse zeigt immer zum Gegner.</p><p>Gewonnen hat, wer zuerst alle drei Dosen des anderen Teams trifft. Die Spur des letzten Schusses bleibt in Teamfarbe stehen, das hilft beim Nachjustieren. Im Profimodus gibt es keine Bahnvorschau.</p>` })));
+  return { el: wrap };
+}
+
+/* ---------- Spielmodus-Seite ---------- */
+const FW_ICON = '<svg viewBox="0 0 24 24" fill="none"><path d="M3 19C6 9 14 5 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="1 3.2"/><circle cx="20" cy="9" r="2.6" fill="currentColor"/><path d="M5 21V15M5 15l-2-3M5 15l2-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+const FW_CTA_ART = (() => {
+  const pts = []; for (let i = 0; i <= 24; i++) { const u = i / 24, x = 22 + u * 128, y = 70 - 220 * u * (1 - u) * .32; pts.push([x, y]); }
+  const dots = pts.filter((_, i) => i % 2 === 0 && i < 20).map(([x, y]) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2" fill="currentColor" opacity=".45"/>`).join('');
+  return `<svg viewBox="0 0 170 92" aria-hidden="true"><path d="M0 84H170" stroke="currentColor" stroke-width="2" opacity=".25"/><path d="M22 84V62M22 62l-6-9M22 62l6-9" stroke="#8A5A2B" stroke-width="5" stroke-linecap="round"/>${dots}<g transform="translate(${pts[20][0].toFixed(1)} ${pts[20][1].toFixed(1)}) scale(.62)"><circle r="14" fill="#F3C432"/><path d="M-1 -13.6A14 14 0 0 1 13.4 -4.2L5 -3.5Q1 -6 -1 -13.6Z" fill="#1E252D"/><ellipse cx="7" cy="-.5" rx="5.6" ry="4.4" fill="#fff"/><circle cx="9.8" cy="-4.2" r="1.7" fill="#121212"/><path d="M13.2 -2.4L19.5 -.4L13.4 1.6Z" fill="#3A3530"/></g><rect x="143" y="62" width="11" height="15" rx="2" fill="#D64545"/><rect x="155" y="62" width="11" height="15" rx="2" fill="#2F6FD6"/><rect x="149" y="47" width="11" height="15" rx="2" fill="#E0A21A"/><rect x="140" y="77" width="29" height="7" fill="#C9954E"/></svg>`;
+})();
+let GAME = null;
+function buildGame() {
+  const main = document.querySelector('main'), sec = h('section', { class: 'page gm', id: 'pg-spiel' });
+  const sG = { id: 'spiel', tick: fn => TICKS.push({ id: 'spiel', fn }), done() { } };
+  const TABS = [['kampagne', 'Vier Welten', 'Gleichung eintippen, Level schaffen'], ['duell', 'Duell zu zweit', 'Zwei Teams an einem Gerät'], ['freihand', 'Freihand', 'Ziehen und loslassen']];
+  const nav = h('nav', { class: 'gmtabs', 'aria-label': 'Spielart' }), panes = {}, body = h('div', { class: 'gmbody' });
+  TABS.forEach(([k, t, sub]) => nav.append(h('a', { href: '#spiel/' + k, 'data-k': k }, h('b', {}, t), h('small', {}, sub))));
+  sec.append(h('div', { class: 'gmhero' }, h('div', { class: 'gmht' }, h('div', { class: 'hk' }, 'OpenMath · Spielmodus'), h('h1', { html: 'Die <em>Meisenschleuder</em>' }), h('p', { class: 'hl', html: `Du tippst eine Parabel ein, die Meise fliegt sie nach. Wer die Gleichung lesen kann, trifft.` })), h('span', { class: 'gmart', html: FW_CTA_ART })), nav, body);
+  main.append(sec);
+  function kampagne() {
+    const box = h('div', { class: 'gmk' }), grid = h('div', { class: 'gmworlds' }), play = h('div', { class: 'gmplay' });
+    let cur = null;
+    const draw = () => {
+      grid.innerHTML = '';
+      FW_WORLDS.forEach((w, wi) => {
+        const got = w.ids.reduce((n, k) => n + (FWS[k] || 0), 0), max = w.ids.length * 3;
+        const card = h('div', { class: 'gmw' + (cur && cur.wi === wi ? ' cur' : '') }, h('small', {}, w.n), h('b', {}, w.t), h('p', {}, w.s),
+          h('div', { class: 'gmlv' }, w.ids.map((k, i) => { const b = h('button', { type: 'button', class: 'gml' + (FWS[k] ? ' won' : ''), title: FWL[k].n }, h('span', {}, String(i + 1)), h('small', {}, FWS[k] ? '★'.repeat(FWS[k]) : '·')); b.onclick = () => open(wi, i); return b; })),
+          h('div', { class: 'gmbar' }, h('i', { style: `width:${100 * got / max}%` })), h('span', { class: 'gmsum' }, `${got} von ${max} Sternen`));
+        card.addEventListener('click', e => { if (!e.target.closest('button')) open(wi, 0); });
+        grid.append(card);
+      });
+    };
+    function open(wi, i) {
+      if (!cur || cur.wi !== wi) { play.innerHTML = ''; cur = { wi, p: fwPlay(sG, { ids: FW_WORLDS[wi].ids, campaign: true, onWin: () => draw() }) }; play.append(h('h3', { class: 'gmh' }, `${FW_WORLDS[wi].n} · ${FW_WORLDS[wi].t}`), cur.p.el); }
+      cur.p.load(i); draw(); requestAnimationFrame(() => play.scrollIntoView({ behavior: RM.matches ? 'auto' : 'smooth', block: 'start' }));
+    }
+    draw(); box.append(grid, play);
+    return box;
+  }
+  function duell() { return h('div', { class: 'gmd' }, fwDuel(sG).el); }
+  function freihand() { const sl = sling(sG, { mode: 'play', level: 0, live: false, history: false }); return h('div', { class: 'gmf' }, h('p', { class: 'gmlead' }, 'Ohne Tippen: Zieh die Kugel in der Schleuder nach hinten und lass los. Nach jedem Schuss steht die Gleichung der Bahn da.'), sl.el); }
+  const make = { kampagne, duell, freihand };
+  GAME = { sec, nav, panes, body, show(k) { if (!make[k]) k = 'kampagne'; if (!panes[k]) { panes[k] = h('div', { class: 'gmpane' }, make[k]()); body.append(panes[k]); } Object.entries(panes).forEach(([q, el]) => el.hidden = q !== k); nav.querySelectorAll('a').forEach(a => a.setAttribute('aria-current', String(a.dataset.k === k))); } };
+}
+function showGame(k) {
+  if (!GAME) buildGame(); leaveCurrent();
+  document.querySelectorAll('.page.on').forEach(p => p.classList.remove('on')); GAME.sec.classList.add('on');
+  CUR = null; CURRENT = 'spiel'; GAME.show(k || 'kampagne'); updRail(); updTop();
+  document.querySelector('.tb-n').textContent = '◆'; document.querySelector('.tb-t').textContent = 'Spielmodus · Meisenschleuder'; document.title = 'Spielmodus · ' + MOD.t; document.body.classList.remove('menu');
+  window.scrollTo(0, 0);
 }
 
 boot();
